@@ -1,10 +1,11 @@
-package ru.nikita.weatherdiplom
+package ru.nikita.weatherdiplom.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ru.nikita.weatherdiplom.R
 
 
 class DayFragment : Fragment() {
@@ -19,6 +20,10 @@ class DayFragment : Fragment() {
 
 
 
+        //TODO отступы в xml
+
+
+        //TODO lenear layout????
     }
 
 }

@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/dayFragment"
-        android:name="ru.nikita.weatherdiplom.DayFragment"
+        android:name="ru.nikita.weatherdiplom.ui.DayFragment"
         android:label="fragment_day"
         tools:layout="@layout/fragment_day" />
     <fragment
         android:id="@+id/weekFragment"
-        android:name="ru.nikita.weatherdiplom.WeekFragment"
+        android:name="ru.nikita.weatherdiplom.ui.WeekFragment"
         android:label="fragment_week"
         tools:layout="@layout/fragment_week" />
     <fragment
         android:id="@+id/userInfoFragment"
-        android:name="ru.nikita.weatherdiplom.UserInfoFragment"
+        android:name="ru.nikita.weatherdiplom.ui.UserInfoFragment"
         android:label="fragment_user_info"
         tools:layout="@layout/fragment_user_info" />
 </navigation>
