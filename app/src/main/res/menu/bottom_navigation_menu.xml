@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dayFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_today_24"
+        android:title="сегодня"/>
+    <item
+        android:id="@+id/weekFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_week_24"
+        android:title="неделя"/>
+    <item
+        android:id="@+id/userInfoFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_account_24"
+        android:title="user"/>
+
+
+
+</menu>
