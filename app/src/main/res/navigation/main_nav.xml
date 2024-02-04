@@ -20,4 +20,9 @@
         android:name="ru.nikita.weatherdiplom.ui.UserInfoFragment"
         android:label="fragment_user_info"
         tools:layout="@layout/fragment_user_info" />
+    <fragment
+        android:id="@+id/astroFragment"
+        android:name="ru.nikita.weatherdiplom.ui.AstroFragment"
+        android:label="fragment_astro"
+        tools:layout="@layout/fragment_astro" />
 </navigation>

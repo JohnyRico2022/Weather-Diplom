@@ -13,31 +13,29 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tvDataList"
+            android:id="@+id/data_item_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-
             android:text="Monday 08/08/2022"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvConditionList"
+            android:id="@+id/condition_item_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-
             android:text="Sunny"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/tvDataList"
-            app:layout_constraintTop_toBottomOf="@+id/tvDataList" />
+            app:layout_constraintStart_toStartOf="@+id/data_item_week"
+            app:layout_constraintTop_toBottomOf="@+id/data_item_week" />
 
         <ImageView
-            android:id="@+id/im"
+            android:id="@+id/image_item_week"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="6dp"
@@ -47,7 +45,7 @@
             app:srcCompat="@drawable/ic_launcher_foreground" />
 
         <TextView
-            android:id="@+id/tvTempList"
+            android:id="@+id/temp_item_week"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="10dp"
@@ -56,9 +54,9 @@
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/im"
+            app:layout_constraintEnd_toStartOf="@+id/image_item_week"
             app:layout_constraintHorizontal_bias="0.22"
-            app:layout_constraintStart_toEndOf="@+id/tvDataList"
+            app:layout_constraintStart_toEndOf="@+id/data_item_week"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

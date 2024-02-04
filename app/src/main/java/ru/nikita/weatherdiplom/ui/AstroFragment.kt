@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import ru.nikita.weatherdiplom.R
 
-
-class DayFragment : Fragment() {
+class AstroFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -16,17 +15,10 @@ class DayFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_day, container, false)
+        return inflater.inflate(R.layout.fragment_astro, container, false)
 
 
 
-        //TODO отступы в xml
-
-
-        //TODO lenear layout????
-
-
-        //TODO Сделать данные в виде карточки и по клику переходить на новый экран (более подробная информация)
     }
 
 }
