@@ -9,7 +9,11 @@
         android:id="@+id/dayFragment"
         android:name="ru.nikita.weatherdiplom.ui.DayFragment"
         android:label="fragment_day"
-        tools:layout="@layout/fragment_day" />
+        tools:layout="@layout/fragment_day" >
+        <action
+            android:id="@+id/action_dayFragment_to_fullCurrentWeatherFragment"
+            app:destination="@id/fullCurrentWeatherFragment" />
+    </fragment>
     <fragment
         android:id="@+id/weekFragment"
         android:name="ru.nikita.weatherdiplom.ui.WeekFragment"
@@ -25,4 +29,13 @@
         android:name="ru.nikita.weatherdiplom.ui.AstroFragment"
         android:label="fragment_astro"
         tools:layout="@layout/fragment_astro" />
+    <fragment
+        android:id="@+id/fullCurrentWeatherFragment"
+        android:name="ru.nikita.weatherdiplom.FullCurrentWeatherFragment"
+        android:label="fragment_full_current_weather"
+        tools:layout="@layout/fragment_full_current_weather" >
+        <action
+            android:id="@+id/action_fullCurrentWeatherFragment_to_dayFragment"
+            app:destination="@id/dayFragment" />
+    </fragment>
 </navigation>

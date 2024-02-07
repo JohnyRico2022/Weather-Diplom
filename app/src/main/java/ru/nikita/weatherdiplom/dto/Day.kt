@@ -8,5 +8,11 @@ data class Day (
     val maxTemp: String,
     val minTemp: String,
     val imageURL: String,
-    val hours: String,
 )
+
+
+// TODO сделать свайпрефреш
+
+//TODO ставить обои в зависимости от погоды, ориентируясь на пришедший condition
+
+// направление ветра - опционально

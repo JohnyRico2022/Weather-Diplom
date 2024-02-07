@@ -4,94 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sea"
+    android:background="@drawable/background_weather_day"
     tools:context=".ui.DayFragment">
 
-    <TextView
-        android:id="@+id/time"
+
+
+    <ImageView
+        android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/arima_madurai_medium"
-        android:text="07.08.2022 19:38"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="info"
+        android:src="@drawable/ic_info_48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/city_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:fontFamily="@font/arima_madurai_medium"
-        android:text="Санкт-Петербург"
-        android:textColor="@color/white"
-        android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/current_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/arima_madurai_medium"
-        android:text="23 C"
-        android:textColor="@color/white"
-        android:textSize="125sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/city_name" />
-
-
-    <LinearLayout
-        android:id="@+id/linear"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/main_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
+        android:layout_height="300dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/sea"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/current_temp">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/arima_madurai_medium"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            tools:text="Санкт-Петербург" />
+
+        <TextView
+            android:id="@+id/current_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="70dp"
+            android:fontFamily="@font/arima_madurai_medium"
+            tools:text="23 °C"
+            android:textColor="@color/white"
+            android:textSize="100sp" />
 
         <TextView
             android:id="@+id/condition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="100dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="30dp"
             android:fontFamily="@font/arima_madurai_medium"
-            android:text="sunny"
             android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            tools:text="sunny" />
 
         <ImageView
             android:id="@+id/image_weather"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_gravity="end"
-            android:layout_marginStart="50dp"
-            android:src="@drawable/ic_launcher_foreground" />
-    </LinearLayout>
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="30dp"
+            tools:src="@drawable/ic_launcher_foreground" />
 
-    <TextView
-        android:id="@+id/temp_max_min"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:fontFamily="@font/arima_madurai_medium"
-        android:text="28 C / 15 C"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-         />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

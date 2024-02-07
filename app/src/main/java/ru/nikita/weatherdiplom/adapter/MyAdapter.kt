@@ -27,7 +27,7 @@ class WeekViewHolder(
 
     fun bind(week: Week) {
         binding.tempItemWeek.text = week.currentTemp
-        binding.dataItemWeek.text = week.time
+        binding.dataItemWeek.text = week.date
         binding.conditionItemWeek.text = week.condition
         //TODO Вставка картинки
     }
