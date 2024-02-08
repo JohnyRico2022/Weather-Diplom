@@ -31,7 +31,7 @@
         tools:layout="@layout/fragment_astro" />
     <fragment
         android:id="@+id/fullCurrentWeatherFragment"
-        android:name="ru.nikita.weatherdiplom.FullCurrentWeatherFragment"
+        android:name="ru.nikita.weatherdiplom.ui.FullCurrentWeatherFragment"
         android:label="fragment_full_current_weather"
         tools:layout="@layout/fragment_full_current_weather" >
         <action

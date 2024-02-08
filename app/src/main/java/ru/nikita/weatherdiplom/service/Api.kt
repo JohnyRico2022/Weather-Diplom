@@ -24,7 +24,9 @@ class Api(val context: Application) {
 
     fun getCurrentWeather() {
         val city = "Berlin"
-        val url = "${BASE_URL}current.json?key=${API_KEY}&q=${city}&aqi=no"
+        val language = "en"
+        val url =
+            "${BASE_URL}forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no&lang=${language}"
 
         val queue = Volley.newRequestQueue(context)
         val request = StringRequest(
@@ -39,21 +41,35 @@ class Api(val context: Application) {
     }
 
     private fun parseWeatherDataDay(result: String): MutableLiveData<Day> {
-
         val mainObject = JSONObject(result)
+        val day = mainObject.getJSONObject("forecast")
+            .getJSONArray("forecastday")[0] as JSONObject
+
         val itemDay = Day(
             mainObject.getJSONObject("location").getString("name"),
-            mainObject.getJSONObject("current").getString("last_updated"),
-            mainObject.getJSONObject("current").getJSONObject("condition").getString("text"),
             mainObject.getJSONObject("current").getString("temp_c"),
-            "",
-            "",
+            mainObject.getJSONObject("current").getJSONObject("condition").getString("text"),
             mainObject.getJSONObject("current").getJSONObject("condition").getString("icon"),
+            day.getJSONObject("day").getString("mintemp_c"),
+            day.getJSONObject("day").getString("maxtemp_c"),
+            day.getJSONObject("day").getString("avgtemp_c"),
+            mainObject.getJSONObject("current").getString("wind_kph"),
+            day.getJSONObject("day").getString("avgvis_km"),
+            day.getJSONObject("day").getString("totalprecip_mm"),
+            mainObject.getJSONObject("current").getString("humidity"),
+            day.getJSONObject("day").getString("daily_chance_of_rain"),
+            day.getJSONObject("day").getString("daily_chance_of_snow"),
+            day.getJSONObject("astro").getString("sunrise"),
+            day.getJSONObject("astro").getString("sunset"),
+            day.getJSONObject("astro").getString("moonrise"),
+            day.getJSONObject("astro").getString("moonset"),
+            day.getJSONObject("astro").getString("moon_phase"),
+            day.getJSONObject("astro").getString("moon_illumination"),
         )
-        data.value = itemDay //попробовать сразу ретурн на эту строку
+        data.value = itemDay               //попробовать сразу ретурн на эту строку
 
         Log.d("MyLog", "liveData from Api: ${data.value}")
-        Log.d("MyLog", "liveData from Api 2: ${data.isInitialized}")
+
 
         return data
     }

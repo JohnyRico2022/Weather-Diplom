@@ -19,7 +19,6 @@ import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 class DayFragment : Fragment() {
     private lateinit var binding: FragmentDayBinding
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,15 +26,13 @@ class DayFragment : Fragment() {
         val viewModel: WeatherViewModel by activityViewModels()
         binding = FragmentDayBinding.inflate(inflater, container, false)
 
-
         viewModel.getWeather()
 
-
         viewModel.data.observe(viewLifecycleOwner) {
-            val curTemp = "${it.currentTemp}°C"
+
             with(binding) {
                 cityName.text = it.city
-                currentTemp.text = curTemp
+                currentTemp.text = "${it.currentTemp} °C"
                 condition.text = it.condition
                 Picasso.get().load("https:" + it.imageURL).into(imageWeather)
             }
@@ -52,7 +49,7 @@ class DayFragment : Fragment() {
                 "Для перехода кликни по карточке",
                 Toast.LENGTH_SHORT
             )
-            toast.setGravity(Gravity.TOP, 0, 250)
+            toast.setGravity(Gravity.TOP, 250, 250)
             toast.show()
         }
 
