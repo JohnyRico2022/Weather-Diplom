@@ -1,18 +1,18 @@
 package ru.nikita.weatherdiplom.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import ru.nikita.weatherdiplom.databinding.FragmentAstroBinding
+import ru.nikita.weatherdiplom.utils.MoonPhases
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 
 class AstroFragment : Fragment() {
 
-    lateinit var binding : FragmentAstroBinding
+    lateinit var binding: FragmentAstroBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,16 +25,22 @@ class AstroFragment : Fragment() {
 
         viewModel.data.observe(viewLifecycleOwner) {
 
+            val moonPhValue = MoonPhases.changeMoonPhases(it.moon_phase)
+            val moonPhaseImage = MoonPhases.setMoonImage(it.moon_phase)
+
             with(binding) {
                 sunRiseValue.text = it.sunrise
                 sunSetValue.text = it.sunset
                 moonRiseValue.text = it.moonrise
                 moonSetValue.text = it.moonset
-                moonPhaseValue.text = it.moon_phase
-                moonIlluminationValue.text = it.moonIllumination
+                moonPhaseValue.text = moonPhValue
+                moonIlluminationValue.text = "${it.moonIllumination} %"
             }
-            Log.d("MyLog", "liveData FRAGMENT: $it")
+            binding.moonPhaseImage.setImageResource(moonPhaseImage)
         }
+
+
+
 
         return binding.root
 

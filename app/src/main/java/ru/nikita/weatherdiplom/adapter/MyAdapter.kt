@@ -31,7 +31,6 @@ class WeekViewHolder(
         binding.conditionItemWeek.text = week.condition
         //TODO Вставка картинки
     }
-
 }
 
 class WeekDiffCallback : DiffUtil.ItemCallback<Week>() {

@@ -9,12 +9,9 @@
 
     <FrameLayout
         android:id="@+id/frameLayout3"
+        style="@style/data_card"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/border"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -29,24 +26,17 @@
                 android:layout_weight="1">
 
                 <TextView
+                    style="@style/parameter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="10dp"
-                    android:text="Минимальная температура"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text="@string/min_temp" />
 
                 <TextView
                     android:id="@+id/min_temp_value"
+                    style="@style/parameter_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
-                    android:text="00"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    tools:text="00" />
 
             </FrameLayout>
 
@@ -56,24 +46,17 @@
                 android:layout_weight="1">
 
                 <TextView
+                    style="@style/parameter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="10dp"
-                    android:text="Максимальная температура"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text="@string/max_temp" />
 
                 <TextView
                     android:id="@+id/max_temp_value"
+                    style="@style/parameter_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
-                    android:text="00"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    tools:text="00" />
 
             </FrameLayout>
 
@@ -83,24 +66,17 @@
                 android:layout_weight="1">
 
                 <TextView
+                    style="@style/parameter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="10dp"
-                    android:text="Cредняя температура"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text="@string/average_temp" />
 
                 <TextView
                     android:id="@+id/average_temp_value"
+                    style="@style/parameter_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
-                    android:text="00"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    tools:text="00" />
 
             </FrameLayout>
         </LinearLayout>
@@ -108,11 +84,9 @@
 
     <FrameLayout
         android:id="@+id/frameLayout2"
+        style="@style/data_card"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/border"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,24 +103,17 @@
                 android:layout_weight="1">
 
                 <TextView
+                    style="@style/parameter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="10dp"
-                    android:textColor="@color/black"
-                    android:text="Скорость ветра"
-                    android:textSize="20sp" />
+                    android:text="@string/wind_speed" />
 
                 <TextView
                     android:id="@+id/wind_value"
+                    style="@style/parameter_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center"
-                    android:layout_marginEnd="10dp"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:text="00"
-                    android:textSize="20sp" />
+                    tools:text="00" />
 
             </FrameLayout>
 
@@ -156,24 +123,17 @@
                 android:layout_weight="1">
 
                 <TextView
+                    style="@style/parameter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="10dp"
-                    android:text="Cредняя видимость"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text="@string/average_visibility" />
 
                 <TextView
-                    android:id="@+id/average_visbility_value"
+                    android:id="@+id/average_visibility_value"
+                    style="@style/parameter_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
-                    android:text="00"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    tools:text="00" />
 
             </FrameLayout>
         </LinearLayout>
@@ -181,13 +141,10 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
+        style="@style/data_card"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:background="@drawable/border"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout2">
@@ -203,24 +160,17 @@
                 android:layout_weight="1">
 
                 <TextView
+                    style="@style/parameter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="10dp"
-                    android:text="Кол-во осадков"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text="@string/precipitation" />
 
                 <TextView
                     android:id="@+id/precipitation_value"
+                    style="@style/parameter_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
-                    android:text="00"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    tools:text="00" />
 
             </FrameLayout>
 
@@ -230,24 +180,17 @@
                 android:layout_weight="1">
 
                 <TextView
+                    style="@style/parameter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="10dp"
-                    android:text="Влажность"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text="@string/humidity" />
 
                 <TextView
                     android:id="@+id/humidity_value"
+                    style="@style/parameter_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:text="00"
-                    android:textSize="20sp" />
+                    tools:text="00" />
 
             </FrameLayout>
 
@@ -257,24 +200,17 @@
                 android:layout_weight="1">
 
                 <TextView
+                    style="@style/parameter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="10dp"
-                    android:text="Вероятность дождя"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text="@string/rain_chance" />
 
                 <TextView
                     android:id="@+id/rain_chance_value"
+                    style="@style/parameter_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
-                    android:text="00"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    tools:text="00" />
 
             </FrameLayout>
 
@@ -284,24 +220,17 @@
                 android:layout_weight="1">
 
                 <TextView
+                    style="@style/parameter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="10dp"
-                    android:text="Вероятность снега"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text="@string/snow_chance" />
 
                 <TextView
                     android:id="@+id/snow_chance_value"
+                    style="@style/parameter_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="center"
-                    android:text="00"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    tools:text="00" />
 
             </FrameLayout>
         </LinearLayout>

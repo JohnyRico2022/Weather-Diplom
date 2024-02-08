@@ -1,7 +1,6 @@
 package ru.nikita.weatherdiplom.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,13 +28,12 @@ class FullCurrentWeatherFragment : Fragment() {
                 maxTempValue.text = "${it.maxTemp} °C"
                 averageTempValue.text = "${it.avrTemp} °C"
                 windValue.text = "${it.wind} км/ч"
-                averageVisbilityValue.text = "${it.avrVisibility} км/ч"
+                averageVisibilityValue.text = "${it.avrVisibility} км/ч"
                 precipitationValue.text = "${it.precipitation} мм"
                 humidityValue.text = "${it.humidity} %"
                 rainChanceValue.text = "${it.chanceOfRain} %"
                 snowChanceValue.text = "${it.chanceOfSnow} %"
             }
-            Log.d("MyLog", "liveData FRAGMENT: $it")
         }
 
 

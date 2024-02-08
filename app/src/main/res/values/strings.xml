@@ -1,5 +1,22 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Weather Diplom</string>
+    <string name="sun_rise">Sun rise</string>
+    <string name="sun_set">Sun set</string>
+    <string name="moon_rise">Moon rise</string>
+    <string name="moon_set">Moon set</string>
+    <string name="moon_phase_description">Moon phase</string>
+    <string name="min_temp">Minimum temperature</string>
+    <string name="max_temp">Maximum temperature</string>
+    <string name="average_temp">Average temperature</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="average_visibility">Average visibility</string>
+    <string name="precipitation">Precipitation</string>
+    <string name="humidity">Humidity</string>
+    <string name="rain_chance">Chance of rain</string>
+    <string name="snow_chance">Chance of snow</string>
+    <string name="info_description">info</string>
+    <string name="moon_illumination">Moon illimination</string>
+    <string name="name_of_city">Name of city</string>
+    <string name="toast_info">For details click on the card</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

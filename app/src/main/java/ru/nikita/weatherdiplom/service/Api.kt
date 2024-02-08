@@ -2,7 +2,6 @@ package ru.nikita.weatherdiplom.service
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest

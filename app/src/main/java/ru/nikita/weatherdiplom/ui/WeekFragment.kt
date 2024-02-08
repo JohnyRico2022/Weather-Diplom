@@ -40,8 +40,6 @@ class WeekFragment : Fragment() {
         //TODO Улучшить внешний вид каждого айтема
 
 
-
-
         return binding.root
     }
 }

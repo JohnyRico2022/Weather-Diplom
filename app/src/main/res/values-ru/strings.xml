@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Weather Diplom</string>
+    <string name="sun_rise">Восход солнца</string>
+    <string name="sun_set">Заход солнца</string>
+    <string name="moon_rise">Восход луны</string>
+    <string name="moon_set">Заход луны</string>
+    <string name="moon_phase_description">Фаза луны</string>
+    <string name="min_temp">Минимальная температура</string>
+    <string name="max_temp">Максимальная температура</string>
+    <string name="average_temp">Cредняя температура</string>
+    <string name="wind_speed">Скорость ветра</string>
+    <string name="average_visibility">Cредняя видимость</string>
+    <string name="precipitation">Кол-во осадков</string>
+    <string name="humidity">Влажность</string>
+    <string name="rain_chance">Вероятность дождя</string>
+    <string name="snow_chance">Вероятность снега</string>
+    <string name="info_description">info</string>
+    <string name="moon_illumination">Освещенность луны</string>
+    <string name="name_of_city">Название города Латиницей</string>
+    <string name="toast_info">Для подробностей кликни по карточке</string>
+</resources>
