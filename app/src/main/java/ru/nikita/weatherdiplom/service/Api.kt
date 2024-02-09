@@ -21,8 +21,8 @@ class Api(val context: Application) {
     //TODO спрятать ключ в gitIgnor
 
 
-    fun getCurrentWeather() {
-        val city = "Berlin"
+    fun getCurrentWeather(city: String) {
+  //      val city = town ?: "Berlin"
         val language = "en"
         val url =
             "${BASE_URL}forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no&lang=${language}"
@@ -35,6 +35,8 @@ class Api(val context: Application) {
                 parseWeatherDataDay(result)
             },
             { error -> Log.d("MyLog", "Error: $error") }
+
+            //TODO обработка ошибок
         )
         queue.add(request)
     }
@@ -65,12 +67,11 @@ class Api(val context: Application) {
             day.getJSONObject("astro").getString("moon_phase"),
             day.getJSONObject("astro").getString("moon_illumination"),
         )
-        data.value = itemDay               //попробовать сразу ретурн на эту строку
-
-        Log.d("MyLog", "liveData from Api: ${data.value}")
-
+        data.value = itemDay
 
         return data
+
+        Log.d("MyLog", "liveData from Api: ${data.value}")
     }
 
 }

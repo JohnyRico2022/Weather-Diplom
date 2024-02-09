@@ -18,5 +18,10 @@
     <string name="moon_illumination">Moon illimination</string>
     <string name="name_of_city">Name of city</string>
     <string name="toast_info">For details click on the card</string>
-
+    <string name="km_h">км/ч</string>
+    <string name="mm">мм</string>
+    <string name="today">сегодня</string>
+    <string name="week">неделя</string>
+    <string name="astro">астро</string>
+    <string name="account">аккаунт</string>
 </resources>

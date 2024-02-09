@@ -8,35 +8,245 @@
 
 
     <ImageView
-        android:id="@+id/settings"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/settings_24"
+        android:id="@+id/info"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginEnd="@dimen/common_spacing"
+        android:background="@drawable/border"
+        android:contentDescription="@string/info_description"
+        android:padding="4dp"
+        android:src="@drawable/ic_info_outline_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/user_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="180dp"
-        android:src="@drawable/ic_account_box_48"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_card"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="@dimen/common_spacing"
+        android:background="@drawable/border"
+        app:cardCornerRadius="@dimen/common_spacing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Зарегистрироваться"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:layout_marginTop="30dp"
+        <ImageView
+            android:id="@+id/user_logo"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="@dimen/common_spacing"
+            android:src="@drawable/ic_account_box_48"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sign_up_main_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_spacing"
+            android:text="Зарегистрироваться"
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_logo" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Уже с нами?"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/sign_up_main_card"
+            app:layout_constraintTop_toBottomOf="@+id/sign_up_main_card" />
+
+        <TextView
+            android:id="@+id/sign_in_main_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Войти"
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/sign_up_main_card"
+            app:layout_constraintTop_toBottomOf="@+id/sign_up_main_card" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sign_up_card"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:layout_marginTop="@dimen/large_spacing"
+        android:layout_marginEnd="@dimen/common_spacing"
+        android:background="@drawable/border"
+        android:visibility="gone"
+        app:cardCornerRadius="@dimen/common_spacing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/user_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/user_card">
+
+        <TextView
+            android:id="@+id/title_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_spacing"
+            android:gravity="center"
+            android:text="Регистрация"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/login_sign_up"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/common_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/common_spacing"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:hint="Введите логин"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_sign_up" />
+
+        <EditText
+            android:id="@+id/pass_sign_up"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/common_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/common_spacing"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:hint="Введите пароль"
+            android:inputType="textPassword"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_sign_up" />
+
+        <Button
+            android:id="@+id/button_sign_up"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:backgroundTint="@color/sea"
+            android:text="Зарегистрироваться"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pass_sign_up" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sign_in_card"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:visibility="gone"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:layout_marginTop="@dimen/large_spacing"
+        android:layout_marginEnd="@dimen/common_spacing"
+        android:background="@drawable/border"
+        app:cardCornerRadius="@dimen/common_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_card">
+
+        <TextView
+            android:id="@+id/title_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_spacing"
+            android:gravity="center"
+            android:text="Вход"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/login_sign_in"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/common_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/common_spacing"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:hint="Введите логин"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_sign_in" />
+
+        <EditText
+            android:id="@+id/pass_sign_in"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/common_spacing"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginEnd="@dimen/common_spacing"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:hint="Введите пароль"
+            android:inputType="textPassword"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_sign_in" />
+
+        <Button
+            android:id="@+id/button_sign_in"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_spacing"
+            android:backgroundTint="@color/sea"
+            android:text="Войти"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pass_sign_in" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

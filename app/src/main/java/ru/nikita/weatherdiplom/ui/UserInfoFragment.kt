@@ -17,8 +17,31 @@ class UserInfoFragment : Fragment() {
     ): View {
         binding = FragmentUserInfoBinding.inflate(inflater, container, false)
 
-        binding.settings.setOnClickListener {
-            //TODO переход на фрагмент настроек
+        binding.signUpMainCard.setOnClickListener {
+            binding.signUpCard.visibility = View.VISIBLE
+            binding.signInCard.visibility = View.GONE
+
+        }
+
+        binding.signInMainCard.setOnClickListener {
+            binding.signInCard.visibility =View.VISIBLE
+            binding.signUpCard.visibility = View.GONE
+        }
+
+        binding.buttonSignIn.setOnClickListener{
+            binding.signInCard.visibility = View.GONE
+            binding.one.text = "Вы вошли в систему"
+            binding.loginSignIn.setText("")
+            binding.passSignIn.setText("")
+
+
+        }
+
+        binding.buttonSignUp.setOnClickListener {
+            binding.signUpCard.visibility = View.GONE
+            binding.one.text = "Зарегистрирован"
+            binding.loginSignUp.setText("")
+            binding.passSignUp.setText("")
         }
 
 

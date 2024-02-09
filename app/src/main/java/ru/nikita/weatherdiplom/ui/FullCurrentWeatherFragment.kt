@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentFullCurrentWeatherBinding
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 
@@ -19,7 +20,7 @@ class FullCurrentWeatherFragment : Fragment() {
         val viewModel: WeatherViewModel by activityViewModels()
         binding = FragmentFullCurrentWeatherBinding.inflate(inflater, container, false)
 
-        viewModel.getWeather()
+  //      viewModel.getWeather("")   //!!!!!!!!!!!!!!!!!
 
         viewModel.data.observe(viewLifecycleOwner) {
 
@@ -27,18 +28,15 @@ class FullCurrentWeatherFragment : Fragment() {
                 minTempValue.text = "${it.minTemp} °C"
                 maxTempValue.text = "${it.maxTemp} °C"
                 averageTempValue.text = "${it.avrTemp} °C"
-                windValue.text = "${it.wind} км/ч"
-                averageVisibilityValue.text = "${it.avrVisibility} км/ч"
-                precipitationValue.text = "${it.precipitation} мм"
+                windValue.text = "${it.wind} ${R.string.km_h}"
+                averageVisibilityValue.text = "${it.avrVisibility} ${R.string.km_h}"
+                precipitationValue.text = "${it.precipitation} ${R.string.mm}"
                 humidityValue.text = "${it.humidity} %"
                 rainChanceValue.text = "${it.chanceOfRain} %"
                 snowChanceValue.text = "${it.chanceOfSnow} %"
             }
         }
 
-
-
         return binding.root
     }
 }
-//TODO одинаковые элементы в разметке сделать через стиль

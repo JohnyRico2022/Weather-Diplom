@@ -21,7 +21,7 @@ class AstroFragment : Fragment() {
         val viewModel: WeatherViewModel by activityViewModels()
         binding = FragmentAstroBinding.inflate(inflater, container, false)
 
-        viewModel.getWeather()
+ //       viewModel.getWeather()
 
         viewModel.data.observe(viewLifecycleOwner) {
 
@@ -48,5 +48,3 @@ class AstroFragment : Fragment() {
 }
 
 //TODO вставлять картинку фаза луны
-
-//TODO Идет постоянный запрос данных в сеть, проработать этот вопрос

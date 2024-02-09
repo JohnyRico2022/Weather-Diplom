@@ -15,8 +15,8 @@ class WeatherViewModel(context: Application) : AndroidViewModel(context) {
     val data: MutableLiveData<Day> = apiService.data
 
 
-    fun getWeather() {
-        apiService.getCurrentWeather()
+    fun getWeather(town: String) {
+        apiService.getCurrentWeather(town)
     }
 
 

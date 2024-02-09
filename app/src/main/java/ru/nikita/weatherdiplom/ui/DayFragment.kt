@@ -24,7 +24,9 @@ class DayFragment : Fragment() {
         val viewModel: WeatherViewModel by activityViewModels()
         binding = FragmentDayBinding.inflate(inflater, container, false)
 
-        viewModel.getWeather()
+        var city = "Moscow"
+
+        viewModel.getWeather(city)
 
         viewModel.data.observe(viewLifecycleOwner) {
 
@@ -45,21 +47,22 @@ class DayFragment : Fragment() {
             Toast.makeText(requireContext(), R.string.toast_info, Toast.LENGTH_SHORT).show()
         }
 
-        val city = binding.searchCity.text
-
         binding.searchImage.setOnClickListener {
-            Toast.makeText(requireContext(), "Скоро можно будет выбрать $city", Toast.LENGTH_SHORT)
-                .show()
+            val textCity = binding.searchCity.text.toString()
+            city = textCity
 
+            Toast.makeText(requireContext(), "Вы выбрали $city", Toast.LENGTH_SHORT).show()
+            viewModel.getWeather(city)
+            binding.searchCity.setText("")
 
-
-            //TODO condition наезжает на иконку. поставить констрейнт лайаут
-
-
-            //TODO по нажатию кнопки убрать клавиатуру
-
-            //TODO очистка названия города...  подумать
         }
+
+
+        //TODO condition наезжает на иконку. поставить констрейнт лайаут
+
+        //TODO по нажатию кнопки убрать клавиатуру
+
+        //TODO очистка названия города...  подумать
 
 
         return binding.root

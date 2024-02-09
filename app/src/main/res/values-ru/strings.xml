@@ -19,4 +19,10 @@
     <string name="moon_illumination">Освещенность луны</string>
     <string name="name_of_city">Название города Латиницей</string>
     <string name="toast_info">Для подробностей кликни по карточке</string>
+    <string name="km_h">км/ч</string>
+    <string name="mm">мм</string>
+    <string name="today">сегодня</string>
+    <string name="week">неделя</string>
+    <string name="astro">астро</string>
+    <string name="account">аккаунт</string>
 </resources>
