@@ -17,7 +17,7 @@
     <string name="snow_chance">Вероятность снега</string>
     <string name="info_description">info</string>
     <string name="moon_illumination">Освещенность луны</string>
-    <string name="name_of_city">Название города Латиницей</string>
+    <string name="name_of_city">Название города латиницей</string>
     <string name="toast_info">Для подробностей кликни по карточке</string>
     <string name="km_h">км/ч</string>
     <string name="mm">мм</string>

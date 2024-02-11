@@ -47,7 +47,7 @@ class UserInfoFragment : Fragment() {
 
 
 
-
+//TODO убрать одинаковые значения в стили
 
 
         return binding.root

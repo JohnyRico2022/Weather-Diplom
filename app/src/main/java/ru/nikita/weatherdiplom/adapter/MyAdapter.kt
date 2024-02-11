@@ -29,7 +29,7 @@ class WeekViewHolder(
         binding.tempItemWeek.text = week.currentTemp
         binding.dataItemWeek.text = week.date
         binding.conditionItemWeek.text = week.condition
-        //TODO Вставка картинки
+        //TODO №2 Переделать с Week на day
     }
 }
 

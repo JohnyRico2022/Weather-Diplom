@@ -51,7 +51,7 @@
         app:layout_constraintEnd_toStartOf="@+id/search_image"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_card"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -68,22 +68,26 @@
             android:id="@+id/city_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/arima_madurai_medium"
             android:textColor="@color/white"
             android:textSize="35sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Санкт-Петербург" />
 
         <TextView
             android:id="@+id/current_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
             android:layout_marginTop="70dp"
             android:fontFamily="@font/arima_madurai_medium"
             android:textColor="@color/white"
             android:textSize="100sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="23 °C" />
 
         <TextView
@@ -91,21 +95,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="@dimen/common_spacing"
+            android:layout_marginEnd="@dimen/common_spacing"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/arima_madurai_medium"
             android:textColor="@color/white"
             android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/image_weather"
+            app:layout_constraintStart_toStartOf="parent"
             tools:text="sunny" />
 
         <ImageView
             android:id="@+id/image_weather"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_gravity="end|bottom"
             android:layout_marginEnd="80dp"
             android:layout_marginBottom="20dp"
-            tools:src="@drawable/ic_launcher_foreground" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:src="@drawable/ic_launcher_foreground"
 
-    </FrameLayout>
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

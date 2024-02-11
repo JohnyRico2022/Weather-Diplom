@@ -21,18 +21,17 @@ class AstroFragment : Fragment() {
         val viewModel: WeatherViewModel by activityViewModels()
         binding = FragmentAstroBinding.inflate(inflater, container, false)
 
- //       viewModel.getWeather()
 
         viewModel.data.observe(viewLifecycleOwner) {
 
-            val moonPhValue = MoonPhases.changeMoonPhases(it.moon_phase)
-            val moonPhaseImage = MoonPhases.setMoonImage(it.moon_phase)
+            val moonPhValue = MoonPhases.changeMoonPhases(it.moonPhase)
+            val moonPhaseImage = MoonPhases.setMoonImage(it.moonPhase)
 
             with(binding) {
-                sunRiseValue.text = it.sunrise
-                sunSetValue.text = it.sunset
-                moonRiseValue.text = it.moonrise
-                moonSetValue.text = it.moonset
+                sunRiseValue.text = it.sunRise
+                sunSetValue.text = it.sunSet
+                moonRiseValue.text = it.moonRise
+                moonSetValue.text = it.moonSet
                 moonPhaseValue.text = moonPhValue
                 moonIlluminationValue.text = "${it.moonIllumination} %"
             }
@@ -40,11 +39,8 @@ class AstroFragment : Fragment() {
         }
 
 
-
-
         return binding.root
-
     }
 }
 
-//TODO вставлять картинку фаза луны
+//TODO  №5 вставлять картинку фаза луны

@@ -5,6 +5,7 @@ data class Day(
     val currentTemp: String,
     val condition: String,
     val imageURL: String,
+  //  val date: String,   // пока под вопросом
 
     val minTemp: String,         //мин темп
     val maxTemp: String,        //макс темп
@@ -16,17 +17,13 @@ data class Day(
     val chanceOfRain: String,     //вероятность дождя
     val chanceOfSnow: String,     //вероятность снега
 
-    val sunrise: String,
-    val sunset: String,
-    val moonrise: String,
-    val moonset: String,
-    val moon_phase: String,
+    val sunRise: String,
+    val sunSet: String,
+    val moonRise: String,
+    val moonSet: String,
+    val moonPhase: String,
     val moonIllumination: String,
-    )
+)
 
-
-// TODO сделать свайпрефреш
 
 //TODO ставить обои в зависимости от погоды, ориентируясь на пришедший condition
-
-// направление ветра - опционально

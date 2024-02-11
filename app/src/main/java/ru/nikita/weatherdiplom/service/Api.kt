@@ -17,12 +17,12 @@ class Api(val context: Application) {
         const val BASE_URL = "https://api.weatherapi.com/v1/"
     }
 
-    var data: MutableLiveData<Day> = MutableLiveData() //может val
-    //TODO спрятать ключ в gitIgnor
+    var data: MutableLiveData<Day> = MutableLiveData()
+    //TODO №3 спрятать ключ в gitIgnor
 
 
     fun getCurrentWeather(city: String) {
-  //      val city = town ?: "Berlin"
+        //      val city = town ?: "Berlin"
         val language = "en"
         val url =
             "${BASE_URL}forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no&lang=${language}"
@@ -36,7 +36,7 @@ class Api(val context: Application) {
             },
             { error -> Log.d("MyLog", "Error: $error") }
 
-            //TODO обработка ошибок
+            //TODO №4 обработка ошибок
         )
         queue.add(request)
     }

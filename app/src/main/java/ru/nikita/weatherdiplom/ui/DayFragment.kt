@@ -29,14 +29,12 @@ class DayFragment : Fragment() {
         viewModel.getWeather(city)
 
         viewModel.data.observe(viewLifecycleOwner) {
-
             with(binding) {
                 cityName.text = it.city
                 currentTemp.text = "${it.currentTemp} °C"
                 condition.text = it.condition
                 Picasso.get().load("https:" + it.imageURL).into(imageWeather)
             }
-            Log.d("MyLog", "liveData FRAGMENT: $it")
         }
 
         binding.mainCard.setOnClickListener {
@@ -50,22 +48,14 @@ class DayFragment : Fragment() {
         binding.searchImage.setOnClickListener {
             val textCity = binding.searchCity.text.toString()
             city = textCity
-
             Toast.makeText(requireContext(), "Вы выбрали $city", Toast.LENGTH_SHORT).show()
             viewModel.getWeather(city)
             binding.searchCity.setText("")
-
         }
 
-
-        //TODO condition наезжает на иконку. поставить констрейнт лайаут
-
         //TODO по нажатию кнопки убрать клавиатуру
-
-        //TODO очистка названия города...  подумать
 
 
         return binding.root
     }
-
 }
