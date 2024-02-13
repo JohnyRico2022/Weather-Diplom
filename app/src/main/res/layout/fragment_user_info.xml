@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/info"
+        android:id="@+id/settings"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="@dimen/common_spacing"
@@ -16,7 +16,7 @@
         android:background="@drawable/border"
         android:contentDescription="@string/info_description"
         android:padding="4dp"
-        android:src="@drawable/ic_info_outline_24"
+        android:src="@drawable/ic_settings_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

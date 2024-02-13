@@ -25,4 +25,5 @@
     <string name="week">неделя</string>
     <string name="astro">астро</string>
     <string name="account">аккаунт</string>
+    <string name="hourly_forecast">Почасовой прогноз</string>
 </resources>

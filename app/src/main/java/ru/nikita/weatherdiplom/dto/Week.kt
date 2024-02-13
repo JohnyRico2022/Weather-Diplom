@@ -5,4 +5,6 @@ data class Week(
     val condition: String,
     val currentTemp: String,
     val imageURL: String,
+    val hours: String
+
 )

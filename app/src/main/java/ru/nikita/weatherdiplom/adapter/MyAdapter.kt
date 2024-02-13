@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ru.nikita.weatherdiplom.databinding.ItemWeekTempBinding
 import ru.nikita.weatherdiplom.dto.Week
 
@@ -26,10 +27,10 @@ class WeekViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(week: Week) {
-        binding.tempItemWeek.text = week.currentTemp
+        binding.tempItemWeek.text = ("${week.currentTemp} °C")
         binding.dataItemWeek.text = week.date
         binding.conditionItemWeek.text = week.condition
-        //TODO №2 Переделать с Week на day
+        Picasso.get().load("https:" + week.imageURL).into(binding.imageItemWeek)
     }
 }
 

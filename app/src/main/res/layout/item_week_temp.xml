@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/common_spacing"
+    android:layout_marginEnd="@dimen/common_spacing"
+    android:layout_marginStart="@dimen/common_spacing"
+    android:layout_marginTop="@dimen/mini_spacing"
+    android:layout_marginBottom="@dimen/mini_spacing"
     android:background="@drawable/border"
-
     app:cardCornerRadius="10dp">
 
     <TextView

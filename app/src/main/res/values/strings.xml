@@ -15,7 +15,7 @@
     <string name="rain_chance">Chance of rain</string>
     <string name="snow_chance">Chance of snow</string>
     <string name="info_description">info</string>
-    <string name="moon_illumination">Moon illimination</string>
+    <string name="moon_illumination">Moon illumination</string>
     <string name="name_of_city">Name of city</string>
     <string name="toast_info">For details click on the card</string>
     <string name="km_h">km/h</string>
@@ -24,4 +24,7 @@
     <string name="week">week</string>
     <string name="astro">astro</string>
     <string name="account">account</string>
+    <string name="hourly_forecast">Hourly forecast</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

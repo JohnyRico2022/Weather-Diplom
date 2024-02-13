@@ -45,7 +45,7 @@ object MoonPhases {
                 R.drawable.ic_week_24
             }
 
-            else -> R.drawable.settings_24
+            else -> R.drawable.ic_moon_24
         }
 
     }

@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentUserInfoBinding
 
 class UserInfoFragment : Fragment() {
 
-    lateinit var binding: FragmentUserInfoBinding
+    private lateinit var binding: FragmentUserInfoBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +46,10 @@ class UserInfoFragment : Fragment() {
             binding.passSignUp.setText("")
         }
 
+
+        binding.settings.setOnClickListener {
+            findNavController().navigate(R.id.action_userInfoFragment_to_settingsFragment)
+        }
 
 
 

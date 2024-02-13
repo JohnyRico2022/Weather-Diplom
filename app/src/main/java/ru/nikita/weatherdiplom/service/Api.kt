@@ -8,6 +8,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 import ru.nikita.weatherdiplom.dto.Day
+import ru.nikita.weatherdiplom.dto.Week
 
 
 class Api(val context: Application) {
@@ -18,10 +19,13 @@ class Api(val context: Application) {
     }
 
     var data: MutableLiveData<Day> = MutableLiveData()
+
+    var dataList: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
+
     //TODO №3 спрятать ключ в gitIgnor
 
 
-    fun getCurrentWeather(city: String) {
+    fun getWeather(city: String) {
         //      val city = town ?: "Berlin"
         val language = "en"
         val url =
@@ -32,7 +36,7 @@ class Api(val context: Application) {
             Request.Method.GET,
             url,
             { result ->
-                parseWeatherDataDay(result)
+                parseWeatherData(result)
             },
             { error -> Log.d("MyLog", "Error: $error") }
 
@@ -41,8 +45,36 @@ class Api(val context: Application) {
         queue.add(request)
     }
 
-    private fun parseWeatherDataDay(result: String): MutableLiveData<Day> {
+    private fun parseWeatherData(result: String) {
         val mainObject = JSONObject(result)
+        parseDay(mainObject)
+        parseWeek(mainObject)
+
+    }
+
+    private fun parseWeek(mainObject: JSONObject): MutableLiveData<List<Week>> {
+        val list = ArrayList<Week>()
+        val daysArray = mainObject.getJSONObject("forecast").getJSONArray("forecastday")
+        for (i in 0 until daysArray.length()) {
+            val day = daysArray[i] as JSONObject
+
+            val item = Week(
+                day.getString("date"),
+                day.getJSONObject("day").getJSONObject("condition").getString("text"),
+                day.getJSONObject("day").getString("avgtemp_c"),
+                day.getJSONObject("day").getJSONObject("condition").getString("icon"),
+                day.getJSONArray("hour").toString()
+            )
+            list.add(item)
+        }
+        Log.d("MyLog", "parseWeeK: ${list[2]}")
+
+        dataList.value = list
+        return dataList
+    }
+
+    private fun parseDay(mainObject: JSONObject): MutableLiveData<Day> {
+
         val day = mainObject.getJSONObject("forecast")
             .getJSONArray("forecastday")[0] as JSONObject
 
@@ -68,10 +100,9 @@ class Api(val context: Application) {
             day.getJSONObject("astro").getString("moon_illumination"),
         )
         data.value = itemDay
+ //       Log.d("MyLog", "liveData from Api: ${data.value}")
 
         return data
-
-        Log.d("MyLog", "liveData from Api: ${data.value}")
     }
 
 }

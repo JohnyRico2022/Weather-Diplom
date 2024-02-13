@@ -1,6 +1,7 @@
 package ru.nikita.weatherdiplom.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,9 +24,6 @@ class FullCurrentWeatherFragment : Fragment() {
 
         viewModel.data.observe(viewLifecycleOwner) {
 
-
-            //TODO попробовать использовать as String
-
             // Вспомогательный блок кода для перевода значений при смене языка.
             // Прямой подстановкой работает не корректно!
             binding.kmH.setText(R.string.km_h)
@@ -33,6 +31,7 @@ class FullCurrentWeatherFragment : Fragment() {
             val kmH = binding.kmH.text
             val mm = binding.mm.text
             // Конец вспомогательного блока
+
 
             with(binding) {
                 minTempValue.text = "${it.minTemp} °C"
@@ -57,4 +56,4 @@ class FullCurrentWeatherFragment : Fragment() {
 
 //TODO Поставить scrollview для маленьких экранов
 
-//TODO №1 Осталось только свайпрефреш
+//TODO №1  свайпрефреш
