@@ -33,11 +33,16 @@
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
         android:background="@drawable/border"
-        android:contentDescription="back"
+        android:contentDescription="@string/back"
         android:padding="4dp"
         android:src="@drawable/ic_back_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
 
     <FrameLayout
         android:id="@+id/frameLayout3"

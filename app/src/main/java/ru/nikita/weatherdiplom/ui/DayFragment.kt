@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentDayBinding
+import ru.nikita.weatherdiplom.utils.AndroidUtils
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 
 class DayFragment : Fragment() {
@@ -24,7 +25,7 @@ class DayFragment : Fragment() {
         val viewModel: WeatherViewModel by activityViewModels()
         binding = FragmentDayBinding.inflate(inflater, container, false)
 
-        var city = "Moscow"
+        var city = "moscow"
 
         viewModel.getWeather(city)
 
@@ -48,12 +49,11 @@ class DayFragment : Fragment() {
         binding.searchImage.setOnClickListener {
             val textCity = binding.searchCity.text.toString()
             city = textCity
-            Toast.makeText(requireContext(), "Вы выбрали $city", Toast.LENGTH_SHORT).show()
+            AndroidUtils.hideKeyboard(requireView())
             viewModel.getWeather(city)
             binding.searchCity.setText("")
+            Toast.makeText(requireContext(), "Вы выбрали $city", Toast.LENGTH_SHORT).show()
         }
-
-        //TODO по нажатию кнопки убрать клавиатуру
 
 
         return binding.root

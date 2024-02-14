@@ -11,7 +11,7 @@ import ru.nikita.weatherdiplom.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
 
-    lateinit var binding: FragmentSettingsBinding
+    private lateinit var binding: FragmentSettingsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +23,9 @@ class SettingsFragment : Fragment() {
         binding.backToFragmentUser.setOnClickListener {
             findNavController().popBackStack(R.id.userInfoFragment, false)
         }
+
+        binding.tv1.text =
+
 
 
 

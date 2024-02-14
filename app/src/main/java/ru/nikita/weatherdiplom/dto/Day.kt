@@ -24,6 +24,3 @@ data class Day(
     val moonPhase: String,
     val moonIllumination: String,
 )
-
-
-//TODO ставить обои в зависимости от погоды, ориентируясь на пришедший condition

@@ -18,6 +18,7 @@ class Api(val context: Application) {
         const val BASE_URL = "https://api.weatherapi.com/v1/"
     }
 
+
     var data: MutableLiveData<Day> = MutableLiveData()
 
     var dataList: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()

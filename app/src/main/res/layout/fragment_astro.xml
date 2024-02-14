@@ -149,7 +149,7 @@
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="@dimen/common_spacing"
             android:contentDescription="@string/moon_phase_description"
-            android:src="@drawable/ic_moon_24" />
+            android:src="@drawable/waning_crescent" />
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

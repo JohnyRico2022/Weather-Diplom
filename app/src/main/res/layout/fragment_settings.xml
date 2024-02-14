@@ -13,7 +13,7 @@
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
         android:background="@drawable/border"
-        android:contentDescription="back"
+        android:contentDescription="@string/back"
         android:padding="4dp"
         android:src="@drawable/ic_back_24"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,11 +40,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="160dp"
         android:text="еще что-то"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 

@@ -30,29 +30,33 @@ object MoonPhases {
             }                                     //7
             "Waning Crescent" -> {
                 "Убывающий месяц"
-            }                                    //8  сейчас
+            }                                    //8
             else -> "error moon phase"
         }
     }
 
 
+    fun setMoonImage(phase: String): Int {
 
-    fun setMoonImage(phase: String) : Int {
+        return when (phase) {
 
-        return when(phase){
+            "New Moon" -> R.drawable.new_moon
 
-            "Waning Crescent" -> {
-                R.drawable.ic_week_24
-            }
+            "Waxing Crescent" -> R.drawable.waxing_crescent
 
-            else -> R.drawable.ic_moon_24
+            "First Quarter" -> R.drawable.first_quarter
+
+            "Waxing Gibbous" -> R.drawable.waxing_gibbous
+
+            "Full Moon" -> R.drawable.full_moon
+
+            "Waning Gibbous" -> R.drawable.waning_gibbous
+
+            "Last Quarter" -> R.drawable.last_quarter
+
+            "Waning Crescent" -> R.drawable.waning_crescent
+
+            else -> R.drawable.ic_error_24
         }
-
     }
-
-
-
-
-
-
 }

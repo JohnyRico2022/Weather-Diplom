@@ -53,7 +53,3 @@ class FullCurrentWeatherFragment : Fragment() {
         return binding.root
     }
 }
-
-//TODO Поставить scrollview для маленьких экранов
-
-//TODO №1  свайпрефреш

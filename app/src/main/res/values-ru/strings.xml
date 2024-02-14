@@ -26,4 +26,5 @@
     <string name="astro">астро</string>
     <string name="account">аккаунт</string>
     <string name="hourly_forecast">Почасовой прогноз</string>
+    <string name="back">Кликни кнопку, чтоб попасть назад</string>
 </resources>
