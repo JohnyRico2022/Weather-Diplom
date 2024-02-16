@@ -1,3 +1,4 @@
+
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Weather Diplom</string>
     <string name="sun_rise">Sun rise</string>
@@ -26,5 +27,29 @@
     <string name="account">account</string>
     <string name="hourly_forecast">Hourly forecast</string>
     <string name="back">click button to back</string>
-
+    <string name="sign_up">Sign up</string>
+    <string name="already_with_us">Already with us?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="registration">Registration</string>
+    <string name="enter_login">Enter login</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_password">Enter password</string>
+    <string name="sign_in_text">Login</string>
+    <string name="sign_out">Sign out</string>
+    <string name="no_access_text">To access this screen, register and log in</string>
+    <string name="sign_up_successful">Sign Up successful</string>
+    <string name="all_fields_must_be_filled_in">All fields must be filled in!</string>
+    <string name="sign_in_successful">Sign In successful</string>
+    <string name="important_information">"Important information!"</string>
+    <string name="i_understand">"I understand!"</string>
+    <string name="text_in_dialog">" The password field must contain at least 6 characters. \n The mail field must be in the format: mail@mail.com""</string>
+    <string name="new_moon">"New moon"</string>
+    <string name="waxing_crescent">"Waxing crescent"</string>
+    <string name="first_quarter">"First quarter"</string>
+    <string name="waxing_gibbous">"Waxing gibbous"</string>
+    <string name="full_moon">"Full moon"</string>
+    <string name="waning_gibbous">"Waning gibbous"</string>
+    <string name="last_quarter">"Last quarter"</string>
+    <string name="waning_crescent">"Waning crescent"</string>
+    <string name="error_moon_phase">"Error moon phase!"</string>
 </resources>

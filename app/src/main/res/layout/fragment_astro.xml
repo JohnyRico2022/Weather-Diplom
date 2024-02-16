@@ -7,11 +7,21 @@
     android:background="@drawable/background_weather_day"
     tools:context=".ui.AstroFragment">
 
+    <TextView
+        android:id="@+id/moonHelper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="222"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/frame_layout_top"
         style="@style/data_card"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -124,12 +134,14 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/frame_layout_bottom"
         style="@style/data_card"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+        app:layout_constraintTop_toBottomOf="@+id/frame_layout_top">
 
         <TextView
             android:id="@+id/moon_phase_value"
@@ -139,7 +151,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="30sp"
-            android:textStyle="italic|bold"
+            android:textStyle="italic"
             tools:text="Значение Фазы" />
 
         <ImageView
@@ -152,4 +164,29 @@
             android:src="@drawable/waning_crescent" />
 
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/no_access_card_astro_fragment"
+        style="@style/data_card"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_access_text"
+            android:textSize="33sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/common_spacing"
+            android:layout_marginEnd="@dimen/common_spacing"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

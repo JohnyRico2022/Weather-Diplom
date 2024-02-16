@@ -5,7 +5,6 @@ data class Day(
     val currentTemp: String,
     val condition: String,
     val imageURL: String,
-  //  val date: String,   // пока под вопросом
 
     val minTemp: String,         //мин темп
     val maxTemp: String,        //макс темп

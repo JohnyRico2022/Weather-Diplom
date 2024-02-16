@@ -1,7 +1,7 @@
 package ru.nikita.weatherdiplom.ui
 
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +15,9 @@ import ru.nikita.weatherdiplom.databinding.FragmentDayBinding
 import ru.nikita.weatherdiplom.utils.AndroidUtils
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 
+const val KEY_DATA = "DATA"
+const val KEY_DATA_CITY = "CITY"
+
 class DayFragment : Fragment() {
     private lateinit var binding: FragmentDayBinding
 
@@ -24,10 +27,26 @@ class DayFragment : Fragment() {
     ): View {
         val viewModel: WeatherViewModel by activityViewModels()
         binding = FragmentDayBinding.inflate(inflater, container, false)
+        val pref = this.requireActivity()
+            .getSharedPreferences(KEY_DATA, Context.MODE_PRIVATE)
 
-        var city = "moscow"
+
+        val city = pref.getString(KEY_DATA_CITY, "Moscow").toString()
 
         viewModel.getWeather(city)
+
+        binding.searchImage.setOnClickListener {
+            val textCity = binding.searchCity.text.toString()
+            pref.edit()
+                .putString(KEY_DATA_CITY, textCity)
+                .apply()
+            AndroidUtils.hideKeyboard(requireView())
+            viewModel.getWeather(textCity)
+            binding.searchCity.setText("")
+
+  //          Toast.makeText(requireContext(), "Вы выбрали $textCity", Toast.LENGTH_SHORT).show()
+        }
+
 
         viewModel.data.observe(viewLifecycleOwner) {
             with(binding) {
@@ -45,16 +64,6 @@ class DayFragment : Fragment() {
         binding.info.setOnClickListener {
             Toast.makeText(requireContext(), R.string.toast_info, Toast.LENGTH_SHORT).show()
         }
-
-        binding.searchImage.setOnClickListener {
-            val textCity = binding.searchCity.text.toString()
-            city = textCity
-            AndroidUtils.hideKeyboard(requireView())
-            viewModel.getWeather(city)
-            binding.searchCity.setText("")
-            Toast.makeText(requireContext(), "Вы выбрали $city", Toast.LENGTH_SHORT).show()
-        }
-
 
         return binding.root
     }
