@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentAstroBinding
 import ru.nikita.weatherdiplom.utils.MoonPhases
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
@@ -31,7 +30,7 @@ class AstroFragment : Fragment() {
         updateUI(userSignIn, userSignUp)
 
 
-        viewModel.data.observe(viewLifecycleOwner) {
+        viewModel.dataDay.observe(viewLifecycleOwner) {
 
             val moonPhValue = MoonPhases.changeMoonPhases(it.moonPhase)
             val moonPhaseImage = MoonPhases.setMoonImage(it.moonPhase)

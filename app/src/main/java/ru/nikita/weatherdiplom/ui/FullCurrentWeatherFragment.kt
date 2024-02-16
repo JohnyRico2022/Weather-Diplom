@@ -21,7 +21,7 @@ class FullCurrentWeatherFragment : Fragment() {
         val viewModel: WeatherViewModel by activityViewModels()
         binding = FragmentFullCurrentWeatherBinding.inflate(inflater, container, false)
 
-        viewModel.data.observe(viewLifecycleOwner) {
+        viewModel.dataDay.observe(viewLifecycleOwner) {
 
             // Вспомогательный блок кода для перевода значений при смене языка.
             // Прямой подстановкой работает не корректно!

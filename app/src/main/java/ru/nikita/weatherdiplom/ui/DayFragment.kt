@@ -43,12 +43,10 @@ class DayFragment : Fragment() {
             AndroidUtils.hideKeyboard(requireView())
             viewModel.getWeather(textCity)
             binding.searchCity.setText("")
-
-  //          Toast.makeText(requireContext(), "Вы выбрали $textCity", Toast.LENGTH_SHORT).show()
         }
 
 
-        viewModel.data.observe(viewLifecycleOwner) {
+        viewModel.dataDay.observe(viewLifecycleOwner) {
             with(binding) {
                 cityName.text = it.city
                 currentTemp.text = "${it.currentTemp} °C"

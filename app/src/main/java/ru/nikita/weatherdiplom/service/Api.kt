@@ -6,28 +6,24 @@ import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import org.json.JSONArray
 import org.json.JSONObject
 import ru.nikita.weatherdiplom.dto.Day
 import ru.nikita.weatherdiplom.dto.Week
 
 
 class Api(val context: Application) {
-
+    //TODO №1 спрятать ключ в gitIgnor
     companion object {
         const val API_KEY = "51e4803842ee__8fa0795006222906"
         const val BASE_URL = "https://api.weatherapi.com/v1/"
     }
 
-
-    var data: MutableLiveData<Day> = MutableLiveData()
-
-    var dataList: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
-
-    //TODO №1 спрятать ключ в gitIgnor
-
+    var dataDay: MutableLiveData<Day> = MutableLiveData<Day>()
+    var dataListWeek: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
+    var dataHours: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
 
     fun getWeather(city: String) {
-        //      val city = town ?: "Berlin"
         val language = "en"
         val url =
             "${BASE_URL}forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no&lang=${language}"
@@ -40,7 +36,6 @@ class Api(val context: Application) {
                 parseWeatherData(result)
             },
             { error -> Log.d("MyLog", "Error: $error") }
-
             //TODO №2 обработка ошибок
         )
         queue.add(request)
@@ -50,7 +45,6 @@ class Api(val context: Application) {
         val mainObject = JSONObject(result)
         parseDay(mainObject)
         parseWeek(mainObject)
-
     }
 
     private fun parseWeek(mainObject: JSONObject): MutableLiveData<List<Week>> {
@@ -68,10 +62,9 @@ class Api(val context: Application) {
             )
             list.add(item)
         }
- //       Log.d("MyLog", "parseWeeK: ${list[2]}")
 
-        dataList.value = list
-        return dataList
+        dataListWeek.value = list
+        return dataListWeek
     }
 
     private fun parseDay(mainObject: JSONObject): MutableLiveData<Day> {
@@ -100,10 +93,26 @@ class Api(val context: Application) {
             day.getJSONObject("astro").getString("moon_phase"),
             day.getJSONObject("astro").getString("moon_illumination"),
         )
-        data.value = itemDay
- //       Log.d("MyLog", "liveData from Api: ${data.value}")
 
-        return data
+        dataDay.value = itemDay
+        return dataDay
     }
 
+    fun parseHours(itemWeek: String): MutableLiveData<List<Week>> {
+        val hoursArray = JSONArray(itemWeek)
+        val list = ArrayList<Week>()
+        for (i in 0 until hoursArray.length()) {
+            val item = Week(
+                (hoursArray[i] as JSONObject).getString("time"),
+                (hoursArray[i] as JSONObject).getJSONObject("condition").getString("text"),
+                (hoursArray[i] as JSONObject).getString("temp_c"),
+                (hoursArray[i] as JSONObject).getJSONObject("condition").getString("icon"),
+                ""
+            )
+            list.add(item)
+        }
+
+        dataHours.value = list
+        return dataHours
+    }
 }

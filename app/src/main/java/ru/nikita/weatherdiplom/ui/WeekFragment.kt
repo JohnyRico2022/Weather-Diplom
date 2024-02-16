@@ -7,13 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import org.json.JSONArray
-import org.json.JSONObject
 import ru.nikita.weatherdiplom.adapter.MyAdapter
+import ru.nikita.weatherdiplom.adapter.OnInteractionListener
 import ru.nikita.weatherdiplom.databinding.FragmentWeekBinding
 import ru.nikita.weatherdiplom.dto.Week
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
-import java.util.ArrayList
 
 class WeekFragment : Fragment() {
 
@@ -32,32 +30,28 @@ class WeekFragment : Fragment() {
         val userSignIn = preferences.getString(KEY_AUTH_SIGNUP, "signUp").toString()
         updateUI(userSignIn, userSignUp)
 
-        fun getHoursList(weatherItem: Week): List<Week> {
-            val hoursArray = JSONArray(weatherItem.hours)
-            val list = ArrayList<Week>()
-            for (i in 0 until hoursArray.length()) {
-                val item = Week(
-                    (hoursArray[i] as JSONObject).getString("time"),
-                    (hoursArray[i] as JSONObject).getJSONObject("condition").getString("text"),
-                    (hoursArray[i] as JSONObject).getString("temp_c"),
-                    (hoursArray[i] as JSONObject).getJSONObject("condition").getString("icon"),
-                    ""
-                )
-                list.add(item)
-            }
-            return list
-        }
 
-        val adapterDays = MyAdapter()
+        val adapterDays = MyAdapter(object : OnInteractionListener {
+            override fun onItemClicked(itemDay: Week) {
+                viewModel.hoursForParse(itemDay.hours)
+            }
+        })
         binding.daysRecycler.adapter = adapterDays
 
-        val adapterHours = MyAdapter()
+        val adapterHours = MyAdapter(object : OnInteractionListener {
+            override fun onItemClicked(itemDay: Week) {
+                // здесь надо прописать null
+            }
+        })
         binding.hoursRecycler.adapter = adapterHours
 
-        viewModel.dataList.observe(viewLifecycleOwner) {
-            adapterHours.submitList(getHoursList(it[0]))
+        viewModel.dataListWeek.observe(viewLifecycleOwner) {
             adapterDays.submitList(it)
         }
+
+         viewModel.dataHours.observe(viewLifecycleOwner) {
+             adapterHours.submitList(it)
+         }
 
         return binding.root
     }
@@ -73,5 +67,4 @@ class WeekFragment : Fragment() {
             binding.noAccessCardWeekFragment.visibility = View.VISIBLE
         }
     }
-
 }

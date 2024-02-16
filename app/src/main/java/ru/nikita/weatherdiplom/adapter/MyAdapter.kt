@@ -9,11 +9,18 @@ import com.squareup.picasso.Picasso
 import ru.nikita.weatherdiplom.databinding.ItemWeekTempBinding
 import ru.nikita.weatherdiplom.dto.Week
 
-class MyAdapter() : ListAdapter<Week, WeekViewHolder>(WeekDiffCallback()){
+
+interface OnInteractionListener {
+    fun onItemClicked(itemDay: Week){}
+}
+
+class MyAdapter(
+    private val onInteractionListener: OnInteractionListener
+) : ListAdapter<Week, WeekViewHolder>(WeekDiffCallback()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekViewHolder {
        val binding = ItemWeekTempBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return WeekViewHolder(binding)
+        return WeekViewHolder(binding, onInteractionListener)
     }
 
     override fun onBindViewHolder(holder: WeekViewHolder, position: Int) {
@@ -23,7 +30,8 @@ class MyAdapter() : ListAdapter<Week, WeekViewHolder>(WeekDiffCallback()){
 }
 
 class WeekViewHolder(
-  private val  binding: ItemWeekTempBinding
+  private val  binding: ItemWeekTempBinding,
+  private val onInteractionListener: OnInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(week: Week) {
@@ -31,7 +39,16 @@ class WeekViewHolder(
         binding.dataItemWeek.text = week.date
         binding.conditionItemWeek.text = week.condition
         Picasso.get().load("https:" + week.imageURL).into(binding.imageItemWeek)
+        itemListener(week)
     }
+
+    private fun itemListener(week: Week) {
+        itemView.setOnClickListener {
+            onInteractionListener.onItemClicked(week)
+        }
+    }
+
+
 }
 
 class WeekDiffCallback : DiffUtil.ItemCallback<Week>() {

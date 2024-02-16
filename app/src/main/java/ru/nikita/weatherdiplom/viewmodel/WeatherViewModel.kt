@@ -10,15 +10,17 @@ import ru.nikita.weatherdiplom.service.Api
 class WeatherViewModel(context: Application) : AndroidViewModel(context) {
     private val apiService = Api(context,)
 
+    val dataDay: MutableLiveData<Day> = apiService.dataDay
 
-    val dataList: MutableLiveData<List<Week>> = apiService.dataList
+    val dataListWeek: MutableLiveData<List<Week>> = apiService.dataListWeek
 
-    val data: MutableLiveData<Day> = apiService.data
-
+    val dataHours: MutableLiveData<List<Week>> = apiService.dataHours
 
     fun getWeather(town: String) {
         apiService.getWeather(town)
     }
-
+    fun hoursForParse(itemWeek: String) {
+        apiService.parseHours(itemWeek)
+    }
 
 }
