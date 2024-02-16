@@ -23,7 +23,7 @@ class Api(val context: Application) {
 
     var dataList: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
 
-    //TODO №3 спрятать ключ в gitIgnor
+    //TODO №1 спрятать ключ в gitIgnor
 
 
     fun getWeather(city: String) {
@@ -41,7 +41,7 @@ class Api(val context: Application) {
             },
             { error -> Log.d("MyLog", "Error: $error") }
 
-            //TODO №4 обработка ошибок
+            //TODO №2 обработка ошибок
         )
         queue.add(request)
     }
@@ -68,7 +68,7 @@ class Api(val context: Application) {
             )
             list.add(item)
         }
-        Log.d("MyLog", "parseWeeK: ${list[2]}")
+ //       Log.d("MyLog", "parseWeeK: ${list[2]}")
 
         dataList.value = list
         return dataList

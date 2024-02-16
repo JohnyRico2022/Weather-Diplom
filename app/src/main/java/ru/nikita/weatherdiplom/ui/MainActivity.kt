@@ -1,14 +1,11 @@
 package ru.nikita.weatherdiplom.ui
 
-import android.content.Context
-import android.health.connect.datatypes.AppInfo
-import android.os.Build
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import ru.nikita.weatherdiplom.BuildConfig
 import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.ActivityMainBinding
 
@@ -26,6 +23,5 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
     }
-
 }
-//TODO проверка на получение  разрешения на определение местоположения
+//TODO №3 проверка на получение  разрешения на определение местоположения

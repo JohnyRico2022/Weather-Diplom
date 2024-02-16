@@ -4,40 +4,31 @@ import ru.nikita.weatherdiplom.R
 
 object MoonPhases {
 
-    fun changeMoonPhases(phase: String): String {
+    fun changeMoonPhases(phase: String): Int {
         return when (phase) {
 
-            "New Moon" -> {
-                "Новолуние"
-            }                                     //1  луна не видна
-            "Waxing Crescent" -> {
-                "Растущий серп"
-            }                                     //2
-            "First Quarter" -> {
-                "Первая четверть"
-            }                                     //3
-            "Waxing Gibbous" -> {
-                "Растущая луна"
-            }                                    //4
-            "Full Moon" -> {
-                "Полнолуние"
-            }                                    // 5  видна полностью
-            "Waning Gibbous" -> {
-                "Убывающая луна"
-            }                                     //6
-            "Last Quarter" -> {
-                "Последняя четверть"
-            }                                     //7
-            "Waning Crescent" -> {
-                "Убывающий месяц"
-            }                                    //8
-            else -> "error moon phase"
+            "New Moon" -> R.string.new_moon
+
+            "Waxing Crescent" -> R.string.waxing_crescent
+
+            "First Quarter" -> R.string.first_quarter
+
+            "Waxing Gibbous" -> R.string.waxing_gibbous
+
+            "Full Moon" -> R.string.full_moon
+
+            "Waning Gibbous" -> R.string.waning_gibbous
+
+            "Last Quarter" -> R.string.last_quarter
+
+            "Waning Crescent" -> R.string.waning_crescent
+
+            else -> R.string.error_moon_phase
         }
     }
 
 
     fun setMoonImage(phase: String): Int {
-
         return when (phase) {
 
             "New Moon" -> R.drawable.new_moon
