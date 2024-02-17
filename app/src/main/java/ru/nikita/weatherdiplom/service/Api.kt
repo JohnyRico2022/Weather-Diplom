@@ -10,6 +10,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import ru.nikita.weatherdiplom.dto.Day
 import ru.nikita.weatherdiplom.dto.Week
+import ru.nikita.weatherdiplom.utils.TextConverter
 
 
 class Api(val context: Application) {
@@ -23,8 +24,7 @@ class Api(val context: Application) {
     var dataListWeek: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
     var dataHours: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
 
-    fun getWeather(city: String) {
-        val language = "en"
+    fun getWeather(city: String, language: String) {
         val url =
             "${BASE_URL}forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no&lang=${language}"
 
@@ -33,6 +33,7 @@ class Api(val context: Application) {
             Request.Method.GET,
             url,
             { result ->
+                Log.d("MyLog", "result: $result")
                 parseWeatherData(result)
             },
             { error -> Log.d("MyLog", "Error: $error") }
@@ -55,7 +56,9 @@ class Api(val context: Application) {
 
             val item = Week(
                 day.getString("date"),
-                day.getJSONObject("day").getJSONObject("condition").getString("text"),
+                TextConverter.convertToUtf8(
+                    day.getJSONObject("day").getJSONObject("condition").getString("text")
+                ),
                 day.getJSONObject("day").getString("avgtemp_c"),
                 day.getJSONObject("day").getJSONObject("condition").getString("icon"),
                 day.getJSONArray("hour").toString()
@@ -73,9 +76,11 @@ class Api(val context: Application) {
             .getJSONArray("forecastday")[0] as JSONObject
 
         val itemDay = Day(
-            mainObject.getJSONObject("location").getString("name"),
+            TextConverter.convertToUtf8(mainObject.getJSONObject("location").getString("name")),
             mainObject.getJSONObject("current").getString("temp_c"),
-            mainObject.getJSONObject("current").getJSONObject("condition").getString("text"),
+            TextConverter.convertToUtf8(
+                mainObject.getJSONObject("current").getJSONObject("condition").getString("text")
+            ),
             mainObject.getJSONObject("current").getJSONObject("condition").getString("icon"),
             day.getJSONObject("day").getString("mintemp_c"),
             day.getJSONObject("day").getString("maxtemp_c"),
@@ -104,7 +109,9 @@ class Api(val context: Application) {
         for (i in 0 until hoursArray.length()) {
             val item = Week(
                 (hoursArray[i] as JSONObject).getString("time"),
-                (hoursArray[i] as JSONObject).getJSONObject("condition").getString("text"),
+                TextConverter.convertToUtf8(
+                    (hoursArray[i] as JSONObject).getJSONObject("condition").getString("text")
+                ),
                 (hoursArray[i] as JSONObject).getString("temp_c"),
                 (hoursArray[i] as JSONObject).getJSONObject("condition").getString("icon"),
                 ""

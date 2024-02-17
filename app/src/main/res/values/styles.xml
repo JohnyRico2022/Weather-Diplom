@@ -33,5 +33,12 @@
         <item name="android:textSize">20sp</item>
         <item name="android:layout_marginTop">@dimen/large_spacing</item>
     </style>
+
+    <style name="radio_button" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/blue</item>
+    </style>
+
+
 </resources>
 

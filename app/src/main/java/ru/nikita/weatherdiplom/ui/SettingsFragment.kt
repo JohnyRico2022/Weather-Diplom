@@ -12,7 +12,6 @@ import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
-
     private lateinit var binding: FragmentSettingsBinding
 
     override fun onCreateView(
@@ -20,6 +19,9 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        val pref = this.requireActivity()
+            .getSharedPreferences(KEY_DATA, Context.MODE_PRIVATE)
+
 
 
         binding.backToFragmentUser.setOnClickListener {
@@ -29,31 +31,28 @@ class SettingsFragment : Fragment() {
 
 
 
-        binding.button1.setOnClickListener {
-
-            val preferences = this.requireActivity()
-                .getSharedPreferences(KEY_AUTH, Context.MODE_PRIVATE)
-
-            val userSignUp = preferences.getString(KEY_AUTH_SIGNIN, "signIn")
-            val userSignIn = preferences.getString(KEY_AUTH_SIGNUP, "signUp")
-
-            binding.userText1.text = userSignUp
-            binding.userText2.text = userSignIn
-
-            if (userSignUp == userSignIn){
-                Toast.makeText(requireContext(),"равны", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(),"НЕ РАВНЫ", Toast.LENGTH_SHORT).show()
-            }
+        binding.ruButton.setOnClickListener {
+            val lang = "ru"
+            pref.edit()
+                .putString(KEY_DATA_LANGUAGE, lang)
+                .apply()
+            Toast.makeText(requireContext(), "ru", Toast.LENGTH_SHORT).show()
         }
-
-
-
-
-
+        binding.enButton.setOnClickListener {
+            val lang = "en"
+            pref.edit()
+                .putString(KEY_DATA_LANGUAGE, lang)
+                .apply()
+            Toast.makeText(requireContext(), "en", Toast.LENGTH_SHORT).show()
+        }
+        binding.itButton.setOnClickListener {
+            val lang = "it"
+            pref.edit()
+                .putString(KEY_DATA_LANGUAGE, lang)
+                .apply()
+            Toast.makeText(requireContext(), "it", Toast.LENGTH_SHORT).show()
+        }
 
         return binding.root
     }
-
-
 }

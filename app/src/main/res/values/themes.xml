@@ -10,12 +10,20 @@
         <item name="colorSecondaryVariant">@color/sea</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
     <!-- Base application theme. -->
-    <style name="Base.Theme.WeatherDiplom" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.MyTheme.WeatherDiplom" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimaryVariant">@color/red</item>
+        <item name="colorOnPrimary">@color/red</item>
+        <item name="colorSecondary">@color/red</item>
+        <item name="colorSecondaryVariant">@color/red</item>
+        <item name="colorOnSecondary">@color/red</item>
+        <item name="android:statusBarColor">@color/red</item>
+
+
     </style>
 </resources>

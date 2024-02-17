@@ -3,7 +3,6 @@ package ru.nikita.weatherdiplom.utils
 import ru.nikita.weatherdiplom.R
 
 object MoonPhases {
-
     fun changeMoonPhases(phase: String): Int {
         return when (phase) {
 

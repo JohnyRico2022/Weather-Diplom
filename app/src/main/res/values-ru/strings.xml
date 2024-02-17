@@ -18,7 +18,7 @@
     <string name="info_description">info</string>
     <string name="moon_illumination">Освещенность луны</string>
     <string name="name_of_city">Введи город</string>
-    <string name="toast_info">Для подробностей кликни по карточке</string>
+    <string name="info_main_card"> Для подробной информации кликни по карточке.\n Название города можно вводить как на Латинице, так и на Кирилице. Также можно ввести международный код Аэропорта.</string>
     <string name="km_h">км/ч</string>
     <string name="mm">мм</string>
     <string name="today">сегодня</string>
@@ -41,15 +41,16 @@
     <string name="all_fields_must_be_filled_in">Все поля должны быть заполнены!</string>
     <string name="sign_in_successful">Вы успешно вошли в систему!</string>
     <string name="important_information">"Важная информация!"</string>
-    <string name="i_understand">"Я понял!"</string>
-    <string name="text_in_dialog">" Поле пароль должно содержать не менее 6 знаков. \n Поле почта должно быть формата: mail@mail.com"</string>
-    <string name="new_moon">"Новолуние"</string>
-    <string name="waxing_crescent">"Растущий серп"</string>
-    <string name="first_quarter">"Первая четверть"</string>
-    <string name="waxing_gibbous">"Растущая луна"</string>
+    <string name="i_understand">Я понял!</string>
+    <string name="text_in_dialog"> Поле пароль должно содержать не менее 6 знаков. \n Поле почта должно быть формата: mail@mail.com</string>
+    <string name="new_moon">Новолуние</string>
+    <string name="waxing_crescent">Растущий серп</string>
+    <string name="first_quarter">Первая четверть</string>
+    <string name="waxing_gibbous">Растущая луна</string>
     <string name="full_moon">"Полнолуние"</string>
-    <string name="waning_gibbous">"Убывающая луна"</string>
-    <string name="last_quarter">"Последняя четверть"</string>
+    <string name="waning_gibbous">Убывающая луна</string>
+    <string name="last_quarter">"Последняя четверть</string>
     <string name="waning_crescent">"Убывающий месяц"</string>
-    <string name="error_moon_phase">"Ошибка!"</string>
+    <string name="error_moon_phase">Ошибка!</string>
+    <string name="sign_out_successful">"Вы успешно вышли из системы"</string>
 </resources>

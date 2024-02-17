@@ -1,5 +1,6 @@
 package ru.nikita.weatherdiplom.ui
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,6 +18,8 @@ import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 
 const val KEY_DATA = "DATA"
 const val KEY_DATA_CITY = "CITY"
+const val KEY_DATA_LANGUAGE = "LANGUAGE"
+const val KEY_DATA_COLOR = "COLOR"
 
 class DayFragment : Fragment() {
     private lateinit var binding: FragmentDayBinding
@@ -26,14 +29,16 @@ class DayFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val viewModel: WeatherViewModel by activityViewModels()
+
         binding = FragmentDayBinding.inflate(inflater, container, false)
+
         val pref = this.requireActivity()
             .getSharedPreferences(KEY_DATA, Context.MODE_PRIVATE)
 
-
         val city = pref.getString(KEY_DATA_CITY, "Moscow").toString()
+        val language = pref.getString(KEY_DATA_LANGUAGE, "en").toString()
 
-        viewModel.getWeather(city)
+        viewModel.getWeather(city, language)
 
         binding.searchImage.setOnClickListener {
             val textCity = binding.searchCity.text.toString()
@@ -41,7 +46,7 @@ class DayFragment : Fragment() {
                 .putString(KEY_DATA_CITY, textCity)
                 .apply()
             AndroidUtils.hideKeyboard(requireView())
-            viewModel.getWeather(textCity)
+            viewModel.getWeather(textCity, language)
             binding.searchCity.setText("")
         }
 
@@ -60,9 +65,18 @@ class DayFragment : Fragment() {
         }
 
         binding.info.setOnClickListener {
-            Toast.makeText(requireContext(), R.string.toast_info, Toast.LENGTH_SHORT).show()
+            showInfoDialog()
         }
 
         return binding.root
+    }
+
+    private fun showInfoDialog() {
+        AlertDialog.Builder(requireContext())
+            .setIcon(R.drawable.ic_error_24_black)
+            .setTitle(R.string.important_information)
+            .setMessage(R.string.info_main_card)
+            .setPositiveButton(R.string.i_understand) { _, _ -> }
+            .show()
     }
 }

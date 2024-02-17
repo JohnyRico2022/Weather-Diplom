@@ -5,4 +5,9 @@
     <color name="sea_transparent">#9934A4B3</color>
     <color name="sea">#34A4B3</color>
     <color name="blue">#081583</color>
+    <color name="red">#D10F37</color>
+
+    <color name="green_transparent">#998CE489</color>
+    <color name="green">#045516</color>
+
 </resources>

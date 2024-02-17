@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.fragment_container)
 
         navView.setupWithNavController(navController)
+
+
     }
 }
 //TODO №3 проверка на получение  разрешения на определение местоположения
