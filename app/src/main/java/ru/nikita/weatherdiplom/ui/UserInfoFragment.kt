@@ -1,6 +1,5 @@
 package ru.nikita.weatherdiplom.ui
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,11 +11,11 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentUserInfoBinding
-
-const val KEY_AUTH = "KOTLIN"
-const val KEY_AUTH_SIGNUP = "SIGNUP"
-const val KEY_AUTH_SIGNIN = "SIGNIN"
-const val KEY_LOGIN_NAME = "LOGIN"
+import ru.nikita.weatherdiplom.utils.KEY_AUTH
+import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNIN
+import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNUP
+import ru.nikita.weatherdiplom.utils.KEY_LOGIN_NAME
+import ru.nikita.weatherdiplom.utils.dialogManager.InfoDialog
 
 class UserInfoFragment : Fragment() {
 
@@ -62,7 +61,7 @@ class UserInfoFragment : Fragment() {
                                 .putString(KEY_LOGIN_NAME, login)
                                 .apply()
                         } else {
-                            showDialog()
+                            InfoDialog.registrationInfoDialog(requireContext())
                         }
                     }
 
@@ -102,7 +101,7 @@ class UserInfoFragment : Fragment() {
                             updateMainCard(userSignIn2, userSignUp2)
 
                         } else {
-                            showDialog()
+                            InfoDialog.registrationInfoDialog(requireContext())
                         }
                     }
             } else {
@@ -146,15 +145,6 @@ class UserInfoFragment : Fragment() {
             binding.signUpMainCard.visibility = View.VISIBLE
             binding.signInMainCard.visibility = View.VISIBLE
         }
-    }
-
-    private fun showDialog() {
-        AlertDialog.Builder(requireContext())
-            .setIcon(R.drawable.ic_error_24_black)
-            .setTitle(R.string.important_information)
-            .setMessage(R.string.text_in_dialog)
-            .setPositiveButton(R.string.i_understand) { _, _ -> }
-            .show()
     }
 
     private fun successfulSignUp() {

@@ -11,6 +11,9 @@ import ru.nikita.weatherdiplom.adapter.MyAdapter
 import ru.nikita.weatherdiplom.adapter.OnInteractionListener
 import ru.nikita.weatherdiplom.databinding.FragmentWeekBinding
 import ru.nikita.weatherdiplom.dto.Week
+import ru.nikita.weatherdiplom.utils.KEY_AUTH
+import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNIN
+import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNUP
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 
 class WeekFragment : Fragment() {
@@ -40,7 +43,7 @@ class WeekFragment : Fragment() {
 
         val adapterHours = MyAdapter(object : OnInteractionListener {
             override fun onItemClicked(itemDay: Week) {
-                // здесь надо прописать null
+                //TODO здесь надо прописать null
             }
         })
         binding.hoursRecycler.adapter = adapterHours

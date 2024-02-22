@@ -1,37 +1,53 @@
 package ru.nikita.weatherdiplom.ui
 
-import android.app.AlertDialog
+import android.Manifest
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
+import com.google.android.gms.tasks.CancellationTokenSource
 import com.squareup.picasso.Picasso
+import ru.nikita.weatherdiplom.BuildConfig
 import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentDayBinding
 import ru.nikita.weatherdiplom.utils.AndroidUtils
+import ru.nikita.weatherdiplom.utils.KEY_DATA
+import ru.nikita.weatherdiplom.utils.KEY_DATA_CITY
+import ru.nikita.weatherdiplom.utils.KEY_DATA_LANGUAGE
+import ru.nikita.weatherdiplom.utils.dialogManager.AccessDialog
+import ru.nikita.weatherdiplom.utils.dialogManager.DialogClickListener
+import ru.nikita.weatherdiplom.utils.dialogManager.InfoDialog
+import ru.nikita.weatherdiplom.utils.dialogManager.LocationDialog
+import ru.nikita.weatherdiplom.utils.isPermissionGranted
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
-
-const val KEY_DATA = "DATA"
-const val KEY_DATA_CITY = "CITY"
-const val KEY_DATA_LANGUAGE = "LANGUAGE"
-const val KEY_DATA_COLOR = "COLOR"
 
 class DayFragment : Fragment() {
     private lateinit var binding: FragmentDayBinding
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var launcher: ActivityResultLauncher<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val viewModel: WeatherViewModel by activityViewModels()
-
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         binding = FragmentDayBinding.inflate(inflater, container, false)
-
+        checkPermission()
         val pref = this.requireActivity()
             .getSharedPreferences(KEY_DATA, Context.MODE_PRIVATE)
 
@@ -39,6 +55,10 @@ class DayFragment : Fragment() {
         val language = pref.getString(KEY_DATA_LANGUAGE, "en").toString()
 
         viewModel.getWeather(city, language)
+
+        binding.location.setOnClickListener {
+            getLocation(viewModel)
+        }
 
         binding.searchImage.setOnClickListener {
             val textCity = binding.searchCity.text.toString()
@@ -65,18 +85,73 @@ class DayFragment : Fragment() {
         }
 
         binding.info.setOnClickListener {
-            showInfoDialog()
+            InfoDialog.mainCardInfoDialog(requireContext())
         }
 
         return binding.root
     }
 
-    private fun showInfoDialog() {
-        AlertDialog.Builder(requireContext())
-            .setIcon(R.drawable.ic_error_24_black)
-            .setTitle(R.string.important_information)
-            .setMessage(R.string.info_main_card)
-            .setPositiveButton(R.string.i_understand) { _, _ -> }
-            .show()
+    private fun isLocationEnabled(): Boolean {   //проверка, включен ли GPS
+        val locationManager =
+            activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
+
+    private fun getLocation(viewModel: WeatherViewModel) {
+
+        if (!isLocationEnabled()) {
+            LocationDialog.settingsLocation(requireContext(), object : DialogClickListener {
+                override fun onClick() {
+                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
+            })
+
+            return
+        } else {
+
+            val pref = this.requireActivity()
+                .getSharedPreferences(KEY_DATA, Context.MODE_PRIVATE)
+            val language = pref.getString(KEY_DATA_LANGUAGE, "en").toString()
+
+            val token = CancellationTokenSource()
+
+            if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                AccessDialog.accessLocationLimited(requireContext(), object : DialogClickListener {
+                    override fun onClick() {
+                        startActivity(Intent(Settings.ACTION_APPLICATION_SETTINGS))
+                    }
+                })
+                return
+            }
+            fusedLocationClient
+                .getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, token.token)
+                .addOnCompleteListener {
+                    val currentCity = "${it.result.latitude},${it.result.longitude}"
+                    viewModel.getWeather(currentCity, language)
+                    pref.edit()
+                        .putString(KEY_DATA_CITY, currentCity)
+                        .apply()
+                }
+        }
+    }
+
+    private fun permissionListener() {
+        launcher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+        }
+    }
+
+    private fun checkPermission() {
+        if (!isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
+            permissionListener()
+            launcher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
+    }
+
 }

@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/backToFragmentDay"
+        android:id="@+id/back_to_fragment_day"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="@dimen/common_spacing"

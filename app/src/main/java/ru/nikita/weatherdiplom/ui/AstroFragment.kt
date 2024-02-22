@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import ru.nikita.weatherdiplom.databinding.FragmentAstroBinding
+import ru.nikita.weatherdiplom.utils.KEY_AUTH
+import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNIN
+import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNUP
 import ru.nikita.weatherdiplom.utils.MoonPhases
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 

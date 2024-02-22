@@ -8,6 +8,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import org.json.JSONObject
+import ru.nikita.weatherdiplom.BuildConfig
 import ru.nikita.weatherdiplom.dto.Day
 import ru.nikita.weatherdiplom.dto.Week
 import ru.nikita.weatherdiplom.utils.TextConverter
@@ -33,7 +34,7 @@ class Api(val context: Application) {
             Request.Method.GET,
             url,
             { result ->
-                Log.d("MyLog", "result: $result")
+  //              Log.d("MyLog", "result: $result")
                 parseWeatherData(result)
             },
             { error -> Log.d("MyLog", "Error: $error") }

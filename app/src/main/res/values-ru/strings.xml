@@ -49,8 +49,20 @@
     <string name="waxing_gibbous">Растущая луна</string>
     <string name="full_moon">"Полнолуние"</string>
     <string name="waning_gibbous">Убывающая луна</string>
-    <string name="last_quarter">"Последняя четверть</string>
-    <string name="waning_crescent">"Убывающий месяц"</string>
+    <string name="last_quarter">Последняя четверть</string>
+    <string name="waning_crescent">Убывающий месяц</string>
     <string name="error_moon_phase">Ошибка!</string>
-    <string name="sign_out_successful">"Вы успешно вышли из системы"</string>
+    <string name="sign_out_successful">Вы успешно вышли из системы</string>
+    <string name="attention">Внимание!</string>
+    <string name="gps_question">Хотите включить GPS, чтобы узнавать погоду по вашему местоположению?</string>
+    <string name="ok">Да</string>
+    <string name="cancel">Отмена</string>
+    <string name="location_question">Функционал ограничен! Вы не дали разрешение на использование своего местоположения. Хоти включить это в настройках?</string>
+    <string name="language_selection">Выбор языка состояния погоды</string>
+    <string name="english">английский</string>
+    <string name="russian">русский</string>
+    <string name="italian">итальянский</string>
+    <string name="rate_the_app">Оцените приложение</string>
+    <string name="version_app">Версия приложения</string>
+    <string name="rate">Оценить</string>
 </resources>
