@@ -16,6 +16,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+       /* def properties = new Properties()
+        def file = rootProject.file("key.properties")
+        if(file.exists()) {
+            properties.load(file.newDataInputStream())
+        }
+        manifestPlaceholders.myApiKey = properties.getProperty("API_KEY", "")*/
+
     }
 
     buildTypes {

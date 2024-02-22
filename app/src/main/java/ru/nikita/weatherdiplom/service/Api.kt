@@ -13,17 +13,18 @@ import ru.nikita.weatherdiplom.dto.Day
 import ru.nikita.weatherdiplom.dto.Week
 import ru.nikita.weatherdiplom.utils.TextConverter
 
-
 class Api(val context: Application) {
     //TODO №1 спрятать ключ в gitIgnor
     companion object {
-        const val API_KEY = "51e4803842ee__8fa0795006222906"
+        const val API_KEY = "51e4803842ee448fa0795006222906"
         const val BASE_URL = "https://api.weatherapi.com/v1/"
     }
 
     var dataDay: MutableLiveData<Day> = MutableLiveData<Day>()
     var dataListWeek: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
     var dataHours: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
+
+    val rrr = BuildConfig.VERSION_NAME
 
     fun getWeather(city: String, language: String) {
         val url =
