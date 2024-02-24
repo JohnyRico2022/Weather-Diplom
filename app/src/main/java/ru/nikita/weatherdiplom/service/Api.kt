@@ -6,9 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
-import ru.nikita.weatherdiplom.BuildConfig
 import ru.nikita.weatherdiplom.dto.Day
 import ru.nikita.weatherdiplom.dto.Week
 import ru.nikita.weatherdiplom.utils.TextConverter
@@ -24,33 +27,43 @@ class Api(val context: Application) {
     var dataListWeek: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
     var dataHours: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
 
-    val rrr = BuildConfig.VERSION_NAME
 
-    fun getWeather(city: String, language: String) {
-        val url =
-            "${BASE_URL}forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no&lang=${language}"
+    suspend fun getWeather(city: String, language: String) {
+        Log.d("MyLog", "getWeather. Thread name:${Thread.currentThread().name}")
 
-        val queue = Volley.newRequestQueue(context)
-        val request = StringRequest(
-            Request.Method.GET,
-            url,
-            { result ->
-  //              Log.d("MyLog", "result: $result")
-                parseWeatherData(result)
-            },
-            { error -> Log.d("MyLog", "Error: $error") }
-            //TODO №2 обработка ошибок
-        )
-        queue.add(request)
+        withContext(Dispatchers.IO) {
+
+            val url =
+                "${BASE_URL}forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no&lang=${language}"
+
+            val queue = Volley.newRequestQueue(context)
+
+            val request = StringRequest(
+                Request.Method.GET,
+                url,
+                { result ->
+                    parseWeatherData(result)
+                },
+                { error -> Log.d("MyLog", "Error: $error") }
+                //TODO №2 обработка ошибок
+            )
+            Log.d("MyLog", "getWeather. Thread name2:${Thread.currentThread().name}")
+            queue.add(request)
+        }
     }
 
+
     private fun parseWeatherData(result: String) {
+
         val mainObject = JSONObject(result)
         parseDay(mainObject)
         parseWeek(mainObject)
+
+
     }
 
     private fun parseWeek(mainObject: JSONObject): MutableLiveData<List<Week>> {
+
         val list = ArrayList<Week>()
         val daysArray = mainObject.getJSONObject("forecast").getJSONArray("forecastday")
         for (i in 0 until daysArray.length()) {
@@ -105,7 +118,7 @@ class Api(val context: Application) {
         return dataDay
     }
 
-    fun parseHours(itemWeek: String): MutableLiveData<List<Week>> {
+    suspend fun parseHours(itemWeek: String): MutableLiveData<List<Week>> {
         val hoursArray = JSONArray(itemWeek)
         val list = ArrayList<Week>()
         for (i in 0 until hoursArray.length()) {

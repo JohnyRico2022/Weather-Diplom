@@ -15,13 +15,14 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.squareup.picasso.Picasso
-import ru.nikita.weatherdiplom.BuildConfig
+import kotlinx.coroutines.launch
 import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentDayBinding
 import ru.nikita.weatherdiplom.utils.AndroidUtils
@@ -54,20 +55,32 @@ class DayFragment : Fragment() {
         val city = pref.getString(KEY_DATA_CITY, "Moscow").toString()
         val language = pref.getString(KEY_DATA_LANGUAGE, "en").toString()
 
-        viewModel.getWeather(city, language)
+        lifecycleScope.launch {
+            viewModel.getWeather(city, language)
+        }
+
+
 
         binding.location.setOnClickListener {
             getLocation(viewModel)
         }
 
         binding.searchImage.setOnClickListener {
-            val textCity = binding.searchCity.text.toString()
-            pref.edit()
-                .putString(KEY_DATA_CITY, textCity)
-                .apply()
-            AndroidUtils.hideKeyboard(requireView())
-            viewModel.getWeather(textCity, language)
-            binding.searchCity.setText("")
+            val textCity = binding.searchCity.text.trim().toString()
+
+            if (textCity.length > 2) {
+                pref.edit()
+                    .putString(KEY_DATA_CITY, textCity)
+                    .apply()
+                AndroidUtils.hideKeyboard(requireView())
+                lifecycleScope.launch {
+                    viewModel.getWeather(textCity, language)
+                }
+
+                binding.searchCity.setText("")
+            } else {
+                InfoDialog.mainCardInfoDialog(requireContext())
+            }
         }
 
 
@@ -134,7 +147,11 @@ class DayFragment : Fragment() {
                 .getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, token.token)
                 .addOnCompleteListener {
                     val currentCity = "${it.result.latitude},${it.result.longitude}"
-                    viewModel.getWeather(currentCity, language)
+
+                    lifecycleScope.launch {
+                        viewModel.getWeather(currentCity, language)
+                    }
+
                     pref.edit()
                         .putString(KEY_DATA_CITY, currentCity)
                         .apply()

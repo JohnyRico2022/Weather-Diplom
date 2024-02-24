@@ -23,7 +23,5 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-
     }
 }
-//TODO №3 проверка на получение  разрешения на определение местоположения
