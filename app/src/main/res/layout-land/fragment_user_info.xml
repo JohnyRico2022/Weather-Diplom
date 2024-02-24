@@ -21,21 +21,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/user_card"
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
         android:layout_marginStart="@dimen/common_spacing"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="@dimen/large_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
         android:background="@drawable/border"
         app:cardCornerRadius="@dimen/common_spacing"
-        app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/user_logo"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="@dimen/common_spacing"
             android:src="@drawable/ic_account_box_48"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,10 +47,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_spacing"
+            android:padding="@dimen/common_padding"
             android:text="@string/sign_up"
             android:textColor="@color/blue"
             android:textSize="16sp"
-            android:padding="@dimen/common_padding"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,10 +61,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:padding="@dimen/common_padding"
             android:text="@string/already_with_us"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:padding="@dimen/common_padding"
             android:visibility="visible"
             app:layout_constraintEnd_toStartOf="@+id/sign_in_main_card"
             app:layout_constraintStart_toStartOf="@+id/sign_up_main_card"
@@ -74,15 +74,15 @@
             android:id="@+id/sign_in_main_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="@dimen/common_spacing"
+            android:layout_marginTop="10dp"
+            android:padding="@dimen/common_padding"
             android:text="@string/sign_in"
             android:textColor="@color/blue"
             android:textSize="16sp"
-            android:padding="@dimen/common_padding"
             android:visibility="visible"
-            app:layout_constraintStart_toEndOf="@+id/with_as_main_card"
             app:layout_constraintEnd_toEndOf="@+id/sign_up_main_card"
+            app:layout_constraintStart_toEndOf="@+id/with_as_main_card"
             app:layout_constraintTop_toBottomOf="@+id/sign_up_main_card" />
 
         <TextView
@@ -116,18 +116,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sign_up_card"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/large_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
-        android:layout_marginBottom="@dimen/large_spacing"
         android:background="@drawable/border"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_card">
+        app:layout_constraintEnd_toStartOf="@+id/settings"
+        app:layout_constraintStart_toEndOf="@+id/user_card"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/title_sign_up"
@@ -174,27 +172,28 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginBottom="@dimen/common_spacing"
             android:backgroundTint="@color/sea"
             android:text="@string/sign_up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pass_sign_up" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sign_in_card"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/large_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
-        android:layout_marginBottom="@dimen/large_spacing"
         android:background="@drawable/border"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_card">
+
+        app:layout_constraintEnd_toStartOf="@+id/settings"
+        app:layout_constraintStart_toEndOf="@+id/user_card"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/title_sign_in"
@@ -234,8 +233,10 @@
             android:layout_marginTop="@dimen/large_spacing"
             android:backgroundTint="@color/sea"
             android:text="@string/sign_in"
+            android:layout_marginBottom="@dimen/common_spacing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pass_sign_in" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
