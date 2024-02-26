@@ -1,65 +1,52 @@
 package ru.nikita.weatherdiplom.service
 
 import android.app.Application
-import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
+import ru.nikita.weatherdiplom.BuildConfig
 import ru.nikita.weatherdiplom.dto.Day
 import ru.nikita.weatherdiplom.dto.Week
 import ru.nikita.weatherdiplom.utils.TextConverter
 
 class Api(val context: Application) {
-    //TODO №1 спрятать ключ в gitIgnor
-    companion object {
-        const val API_KEY = "51e4803842ee448fa0795006222906"
-        const val BASE_URL = "https://api.weatherapi.com/v1/"
-    }
 
     var dataDay: MutableLiveData<Day> = MutableLiveData<Day>()
     var dataListWeek: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
     var dataHours: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
 
+    private val myApiKey = BuildConfig.MY_API_KEY
+    private val baseURL = "https://api.weatherapi.com/v1/"
 
     suspend fun getWeather(city: String, language: String) {
-        Log.d("MyLog", "getWeather. Thread name:${Thread.currentThread().name}")
 
         withContext(Dispatchers.IO) {
 
             val url =
-                "${BASE_URL}forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no&alerts=no&lang=${language}"
+                "${baseURL}forecast.json?key=${myApiKey}&q=${city}&days=3&aqi=no&alerts=no&lang=${language}"
 
             val queue = Volley.newRequestQueue(context)
 
             val request = StringRequest(
                 Request.Method.GET,
                 url,
-                { result ->
-                    parseWeatherData(result)
-                },
-                { error -> Log.d("MyLog", "Error: $error") }
-                //TODO №2 обработка ошибок
+                { result -> parseWeatherData(result) },
+                { error -> parseError(error.toString()) }
             )
-            Log.d("MyLog", "getWeather. Thread name2:${Thread.currentThread().name}")
             queue.add(request)
         }
     }
 
-
     private fun parseWeatherData(result: String) {
-
         val mainObject = JSONObject(result)
         parseDay(mainObject)
         parseWeek(mainObject)
-
-
     }
 
     private fun parseWeek(mainObject: JSONObject): MutableLiveData<List<Week>> {
@@ -136,5 +123,23 @@ class Api(val context: Application) {
 
         dataHours.value = list
         return dataHours
+    }
+
+    private fun parseError(error: String) {
+        when (error) {
+            "com.android.volley.NoConnectionError: java.net.UnknownHostException: Unable to resolve host \"api.weatherapi.com\": No address associated with hostname" ->
+                Toast.makeText(
+                    context,
+                    "Нет сети! Возможно у вас включен Авиарежим.",
+                    Toast.LENGTH_LONG
+                ).show()
+
+            "com.android.volley.ClientError" ->
+                Toast.makeText(context, "Нeправильное Название города город!", Toast.LENGTH_LONG)
+                    .show()
+
+            "com.android.volley.AuthFailureError" ->
+                Toast.makeText(context, "Ошибка ключа доступа (API key)!", Toast.LENGTH_LONG).show()
+        }
     }
 }
