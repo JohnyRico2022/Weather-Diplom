@@ -118,7 +118,8 @@ class UserInfoFragment : Fragment() {
             val userSignUp3 = preferences.getString(KEY_AUTH_SIGNIN, "signIn").toString()
             val userSignIn3 = preferences.getString(KEY_AUTH_SIGNUP, "signUp").toString()
             updateMainCard(userSignIn3, userSignUp3)
-            Toast.makeText(requireContext(),R.string.sign_out_successful, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.sign_out_successful, Toast.LENGTH_SHORT)
+                .show()
         }
 
         binding.settings.setOnClickListener {

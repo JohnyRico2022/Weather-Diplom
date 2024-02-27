@@ -14,13 +14,13 @@ class WeatherViewModel(context: Application) : AndroidViewModel(context) {
 
     val dataListWeek: MutableLiveData<List<Week>> = apiService.dataListWeek
 
-    val dataHours: MutableLiveData<List<Week>> = apiService.dataHours
+    val dataListHours: MutableLiveData<List<Week>> = apiService.dataListHours
 
-    fun getWeather(city: String, language: String) {
-        apiService.getWeather(city, language)
+   suspend fun getWeather(city: String, language: String) {
+            apiService.getWeather(city, language)
     }
-    fun hoursForParse(itemWeek: String) {
-        apiService.parseHours(itemWeek)
+   suspend  fun hoursForParse(itemWeek: String) {
+            apiService.parseHours(itemWeek)
     }
 
 }

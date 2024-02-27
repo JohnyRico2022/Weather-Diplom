@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import ru.nikita.weatherdiplom.adapter.MyAdapter
 import ru.nikita.weatherdiplom.adapter.OnInteractionListener
 import ru.nikita.weatherdiplom.databinding.FragmentWeekBinding
@@ -36,14 +38,19 @@ class WeekFragment : Fragment() {
 
         val adapterDays = MyAdapter(object : OnInteractionListener {
             override fun onItemClicked(itemDay: Week) {
-                viewModel.hoursForParse(itemDay.hours)
+
+                lifecycleScope.launch {
+                    viewModel.hoursForParse(itemDay.hours)
+                }
+                binding.textHoursRecycler?.visibility = View.GONE
+                binding.hoursRecycler.visibility = View.VISIBLE
             }
         })
+
         binding.daysRecycler.adapter = adapterDays
 
         val adapterHours = MyAdapter(object : OnInteractionListener {
             override fun onItemClicked(itemDay: Week) {
-                //TODO здесь надо прописать null
             }
         })
         binding.hoursRecycler.adapter = adapterHours
@@ -52,9 +59,9 @@ class WeekFragment : Fragment() {
             adapterDays.submitList(it)
         }
 
-         viewModel.dataHours.observe(viewLifecycleOwner) {
-             adapterHours.submitList(it)
-         }
+        viewModel.dataListHours.observe(viewLifecycleOwner) {
+            adapterHours.submitList(it)
+        }
 
         return binding.root
     }

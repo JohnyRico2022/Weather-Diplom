@@ -32,7 +32,6 @@ class AstroFragment : Fragment() {
         val userSignIn = preferences.getString(KEY_AUTH_SIGNUP, "signUp").toString()
         updateUI(userSignIn, userSignUp)
 
-
         viewModel.dataDay.observe(viewLifecycleOwner) {
 
             val moonPhValue = MoonPhases.changeMoonPhases(it.moonPhase)
@@ -69,6 +68,5 @@ class AstroFragment : Fragment() {
             binding.noAccessCardAstroFragment.visibility = View.VISIBLE
         }
     }
-
 }
 
