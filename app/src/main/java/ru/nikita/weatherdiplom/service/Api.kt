@@ -1,7 +1,6 @@
 package ru.nikita.weatherdiplom.service
 
 import android.app.Application
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
@@ -69,7 +68,6 @@ class Api(val context: Application) {
                 day.getJSONArray("hour").toString()
             )
             list.add(item)
-            Log.d("MyLog", "Дата:  ${item.date} ")
         }
 
         dataListWeek.value = list
@@ -123,7 +121,6 @@ class Api(val context: Application) {
                 ""
             )
             list.add(item)
-            Log.d("MyLog", "Дата с часами:  ${item.date} ")
         }
 
         dataListHours.value = list
