@@ -14,7 +14,7 @@ class WeatherViewModel(context: Application) : AndroidViewModel(context) {
 
     val dataListWeek: MutableLiveData<List<Week>> = apiService.dataListWeek
 
-    val dataHours: MutableLiveData<List<Week>> = apiService.dataHours
+    val dataListHours: MutableLiveData<List<Week>> = apiService.dataListHours
 
    suspend fun getWeather(city: String, language: String) {
             apiService.getWeather(city, language)

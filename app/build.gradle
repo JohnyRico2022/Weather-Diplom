@@ -37,7 +37,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    compileOptions.encoding = 'ISO-8859-1' // write your encoding here
 
     kotlinOptions {
         jvmTarget = '1.8'

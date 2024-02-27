@@ -14,7 +14,7 @@
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="@drawable/border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/common_spacing"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,9 +54,23 @@
             android:id="@+id/hours_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             android:layout_marginTop="50dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_week_temp" />
+
+        <TextView
+            android:id="@+id/text_hours_recycler"
+            android:text="@string/text_click_on_day"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/common_spacing"
+            android:layout_marginEnd="@dimen/common_spacing"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+
     </FrameLayout>
 
     <FrameLayout
@@ -64,6 +78,7 @@
         style="@style/data_card"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no_access_text"
-            android:textSize="33sp"
+            android:textSize="30sp"
             android:textColor="@color/white"
             android:gravity="center"
             android:layout_marginStart="@dimen/common_spacing"

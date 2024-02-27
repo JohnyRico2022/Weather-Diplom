@@ -1,6 +1,7 @@
 package ru.nikita.weatherdiplom.service
 
 import android.app.Application
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
@@ -11,15 +12,17 @@ import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 import ru.nikita.weatherdiplom.BuildConfig
+import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.dto.Day
 import ru.nikita.weatherdiplom.dto.Week
+import ru.nikita.weatherdiplom.utils.DateConverter
 import ru.nikita.weatherdiplom.utils.TextConverter
 
 class Api(val context: Application) {
 
-    var dataDay: MutableLiveData<Day> = MutableLiveData<Day>()
-    var dataListWeek: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
-    var dataHours: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
+    val dataDay: MutableLiveData<Day> = MutableLiveData<Day>()
+    val dataListWeek: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
+    val dataListHours: MutableLiveData<List<Week>> = MutableLiveData<List<Week>>()
 
     private val myApiKey = BuildConfig.MY_API_KEY
     private val baseURL = "https://api.weatherapi.com/v1/"
@@ -57,7 +60,7 @@ class Api(val context: Application) {
             val day = daysArray[i] as JSONObject
 
             val item = Week(
-                day.getString("date"),
+                DateConverter.convertDate(day.getString("date")),
                 TextConverter.convertToUtf8(
                     day.getJSONObject("day").getJSONObject("condition").getString("text")
                 ),
@@ -66,6 +69,7 @@ class Api(val context: Application) {
                 day.getJSONArray("hour").toString()
             )
             list.add(item)
+            Log.d("MyLog", "Дата:  ${item.date} ")
         }
 
         dataListWeek.value = list
@@ -110,7 +114,7 @@ class Api(val context: Application) {
         val list = ArrayList<Week>()
         for (i in 0 until hoursArray.length()) {
             val item = Week(
-                (hoursArray[i] as JSONObject).getString("time"),
+                DateConverter.convertDateWithHours((hoursArray[i] as JSONObject).getString("time")),
                 TextConverter.convertToUtf8(
                     (hoursArray[i] as JSONObject).getJSONObject("condition").getString("text")
                 ),
@@ -119,27 +123,23 @@ class Api(val context: Application) {
                 ""
             )
             list.add(item)
+            Log.d("MyLog", "Дата с часами:  ${item.date} ")
         }
 
-        dataHours.value = list
-        return dataHours
+        dataListHours.value = list
+        return dataListHours
     }
 
     private fun parseError(error: String) {
         when (error) {
             "com.android.volley.NoConnectionError: java.net.UnknownHostException: Unable to resolve host \"api.weatherapi.com\": No address associated with hostname" ->
-                Toast.makeText(
-                    context,
-                    "Нет сети! Возможно у вас включен Авиарежим.",
-                    Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText(context, R.string.no_network, Toast.LENGTH_LONG).show()
 
             "com.android.volley.ClientError" ->
-                Toast.makeText(context, "Нeправильное Название города город!", Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(context, R.string.city_does_not_exist, Toast.LENGTH_LONG).show()
 
             "com.android.volley.AuthFailureError" ->
-                Toast.makeText(context, "Ошибка ключа доступа (API key)!", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, R.string.access_key_error, Toast.LENGTH_LONG).show()
         }
     }
 }

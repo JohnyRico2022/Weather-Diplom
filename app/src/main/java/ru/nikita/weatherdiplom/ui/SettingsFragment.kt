@@ -28,7 +28,7 @@ class SettingsFragment : Fragment() {
             .getSharedPreferences(KEY_DATA, Context.MODE_PRIVATE)
 
         binding.versionInfoValue.text = BuildConfig.VERSION_NAME
-        val getRating = pref.getFloat(KEY_DATA_RATING, 2.0f)
+        val getRating = pref.getFloat(KEY_DATA_RATING, 3.5f)
         val buttonChecked = pref.getInt(KEY_DATA_RADIO_BUTTON, R.id.ru_button)
 
         binding.backToFragmentUser.setOnClickListener {
@@ -36,7 +36,7 @@ class SettingsFragment : Fragment() {
         }
 
 
-       binding.radioGroup.check(buttonChecked)
+        binding.radioGroup.check(buttonChecked)
 
         binding.ruButton.setOnClickListener {
             val lang = "ru"
@@ -70,13 +70,13 @@ class SettingsFragment : Fragment() {
                     .putFloat(KEY_DATA_RATING, rating)
                     .apply()
 
-                Toast.makeText(requireContext(), "Оценка: $rating. Спасибо за вашу оценку!",
+                Toast.makeText(
+                    requireContext(), "Оценка: $rating. Спасибо за вашу оценку!",
                     Toast.LENGTH_SHORT
                 ).show()
 
             }
         }
-
 
         return binding.root
     }

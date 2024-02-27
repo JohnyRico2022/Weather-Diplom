@@ -48,7 +48,6 @@ class WeekViewHolder(
         }
     }
 
-
 }
 
 class WeekDiffCallback : DiffUtil.ItemCallback<Week>() {

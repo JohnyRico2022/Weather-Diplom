@@ -42,13 +42,15 @@ class WeekFragment : Fragment() {
                 lifecycleScope.launch {
                     viewModel.hoursForParse(itemDay.hours)
                 }
+                binding.textHoursRecycler?.visibility = View.GONE
+                binding.hoursRecycler.visibility = View.VISIBLE
             }
         })
+
         binding.daysRecycler.adapter = adapterDays
 
         val adapterHours = MyAdapter(object : OnInteractionListener {
             override fun onItemClicked(itemDay: Week) {
-                //TODO здесь надо прописать null
             }
         })
         binding.hoursRecycler.adapter = adapterHours
@@ -57,9 +59,9 @@ class WeekFragment : Fragment() {
             adapterDays.submitList(it)
         }
 
-         viewModel.dataHours.observe(viewLifecycleOwner) {
-             adapterHours.submitList(it)
-         }
+        viewModel.dataListHours.observe(viewLifecycleOwner) {
+            adapterHours.submitList(it)
+        }
 
         return binding.root
     }

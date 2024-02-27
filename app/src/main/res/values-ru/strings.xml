@@ -15,7 +15,7 @@
     <string name="humidity">Влажность</string>
     <string name="rain_chance">Вероятность дождя</string>
     <string name="snow_chance">Вероятность снега</string>
-    <string name="info_description">info</string>
+    <string name="info_description">Информация</string>
     <string name="moon_illumination">Освещенность луны</string>
     <string name="name_of_city">Введи город</string>
     <string name="info_main_card"> Для подробной информации кликни по карточке.\n Название города можно вводить как на Латинице, так и на Кирилице. Также можно ввести международный код Аэропорта.</string>
@@ -36,7 +36,7 @@
     <string name="enter_password">Введите пароль</string>
     <string name="sign_in_text">Вход</string>
     <string name="sign_out">Выйти</string>
-    <string name="no_access_text">Для доступа к этому экрану зарегистрируйтесь и войдите в систему</string>
+    <string name="no_access_text">Для доступа к этому экрану зарегистрируйтесь и войдите в систему во вкладку Аккаунт.</string>
     <string name="sign_up_successful">Регистрация прошла успешно</string>
     <string name="all_fields_must_be_filled_in">Все поля должны быть заполнены!</string>
     <string name="sign_in_successful">Вы успешно вошли в систему!</string>
@@ -65,4 +65,8 @@
     <string name="rate_the_app">Оцените приложение</string>
     <string name="version_app">Версия приложения</string>
     <string name="rate">Оценить</string>
+    <string name="text_click_on_day">Кликни по дню в верхней части экрана, чтобы увидеть почасовой прогноз.</string>
+    <string name="no_network">Нет сети! Возможно у вас включен Авиарежим.</string>
+    <string name="city_does_not_exist">Такого города не существует!</string>
+    <string name="access_key_error">Ошибка ключа доступа (API key)!</string>
 </resources>
