@@ -36,7 +36,7 @@
     <string name="enter_password">Введите пароль</string>
     <string name="sign_in_text">Вход</string>
     <string name="sign_out">Выйти</string>
-    <string name="no_access_text">Для доступа к этому экрану зарегистрируйтесь и войдите в систему во вкладку Аккаунт.</string>
+    <string name="no_access_text">Для доступа к этому экрану зарегистрируйтесь и войдите в систему во вкладке Аккаунт</string>
     <string name="sign_up_successful">Регистрация прошла успешно</string>
     <string name="all_fields_must_be_filled_in">Все поля должны быть заполнены!</string>
     <string name="sign_in_successful">Вы успешно вошли в систему!</string>
@@ -69,4 +69,5 @@
     <string name="no_network">Нет сети! Возможно у вас включен Авиарежим.</string>
     <string name="city_does_not_exist">Такого города не существует!</string>
     <string name="access_key_error">Ошибка ключа доступа (API key)!</string>
+    <string name="rates_this_app">Ваша оценка: %1$s. Спасибо за оценку!"</string>
 </resources>

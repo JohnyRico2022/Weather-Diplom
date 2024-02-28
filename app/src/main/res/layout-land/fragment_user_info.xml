@@ -28,7 +28,6 @@
         android:layout_marginEnd="@dimen/common_spacing"
         android:background="@drawable/border"
         app:cardCornerRadius="@dimen/common_spacing"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -144,6 +143,7 @@
         <EditText
             android:id="@+id/login_sign_up"
             style="@style/edit_text_user_info"
+            android:layout_marginTop="20dp"
             android:hint="@string/enter_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -152,6 +152,7 @@
         <EditText
             android:id="@+id/email_sign_up"
             style="@style/edit_text_user_info"
+            android:layout_marginTop="20dp"
             android:hint="@string/enter_email"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
@@ -161,6 +162,7 @@
         <EditText
             android:id="@+id/pass_sign_up"
             style="@style/edit_text_user_info"
+            android:layout_marginTop="20dp"
             android:hint="@string/enter_password"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -171,13 +173,13 @@
             android:id="@+id/button_sign_up"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="@dimen/common_spacing"
             android:backgroundTint="@color/sea"
             android:text="@string/sign_up"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pass_sign_up" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -231,12 +233,12 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_spacing"
+            android:layout_marginBottom="@dimen/common_spacing"
             android:backgroundTint="@color/sea"
             android:text="@string/sign_in"
-            android:layout_marginBottom="@dimen/common_spacing"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pass_sign_in" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

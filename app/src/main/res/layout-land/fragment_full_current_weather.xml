@@ -4,8 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_weather_day"
     tools:context=".ui.FullCurrentWeatherFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background_weather_day"
+        android:scaleType="centerCrop"
+        />
 
     <TextView
         android:id="@+id/km_h"

@@ -35,7 +35,7 @@
     <string name="enter_password">Enter password</string>
     <string name="sign_in_text">Login</string>
     <string name="sign_out">Sign out</string>
-    <string name="no_access_text">To access this screen, register and log in</string>
+    <string name="no_access_text">To access this screen, register and log in under the Account tab.</string>
     <string name="sign_up_successful">Sign Up successful</string>
     <string name="all_fields_must_be_filled_in">All fields must be filled in!</string>
     <string name="sign_in_successful">Sign In successful</string>
@@ -68,4 +68,5 @@
     <string name="no_network">No network! You may have Airplane mode turned on.</string>
     <string name="city_does_not_exist">A city like this does not exist!</string>
     <string name="access_key_error">Access key error (API key)!</string>
+    <string name="rates_this_app">Your rating: %1$s. Thank you for rating!</string>
 </resources>

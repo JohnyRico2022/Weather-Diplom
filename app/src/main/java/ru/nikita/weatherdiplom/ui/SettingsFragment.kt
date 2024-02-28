@@ -70,8 +70,9 @@ class SettingsFragment : Fragment() {
                     .putFloat(KEY_DATA_RATING, rating)
                     .apply()
 
+
                 Toast.makeText(
-                    requireContext(), "Оценка: $rating. Спасибо за вашу оценку!",
+                    requireContext(), getString(R.string.rates_this_app, rating.toString()),
                     Toast.LENGTH_SHORT
                 ).show()
 
