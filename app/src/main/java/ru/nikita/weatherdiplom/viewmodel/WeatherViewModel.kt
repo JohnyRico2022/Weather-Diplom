@@ -7,6 +7,8 @@ import ru.nikita.weatherdiplom.dto.Day
 import ru.nikita.weatherdiplom.dto.Week
 import ru.nikita.weatherdiplom.service.Api
 
+
+
 class WeatherViewModel(context: Application) : AndroidViewModel(context) {
     private val apiService = Api(context,)
 

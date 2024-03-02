@@ -7,23 +7,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import dagger.hilt.android.AndroidEntryPoint
 import ru.nikita.weatherdiplom.databinding.FragmentAstroBinding
 import ru.nikita.weatherdiplom.utils.KEY_AUTH
 import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNIN
 import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNUP
 import ru.nikita.weatherdiplom.utils.MoonPhases
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AstroFragment : Fragment() {
 
     private lateinit var binding: FragmentAstroBinding
 
+    @Inject
+    lateinit var moonPhases: MoonPhases
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val viewModel: WeatherViewModel by activityViewModels()
         binding = FragmentAstroBinding.inflate(inflater, container, false)
+
+       // val moonPhases = MoonPhases()
 
         val preferences = this.requireActivity()
             .getSharedPreferences(KEY_AUTH, Context.MODE_PRIVATE)
@@ -34,12 +41,12 @@ class AstroFragment : Fragment() {
 
         viewModel.dataDay.observe(viewLifecycleOwner) {
 
-            val moonPhValue = MoonPhases.changeMoonPhases(it.moonPhase)
-            val moonPhaseImage = MoonPhases.setMoonImage(it.moonPhase)
+         //   val moonPhValue = moonPhases.changeMoonPhases(it.moonPhase)
+         //   val moonPhaseImage = moonPhases.setMoonImage(it.moonPhase)
 
             // Вспомогательный блок кода для перевода фазы луны при смене языка.
             // Прямой подстановкой работает не корректно!
-            binding.moonHelper.setText(moonPhValue)
+            binding.moonHelper.setText(moonPhases.changeMoonPhases(it.moonPhase))
             val helperMoonPhase = binding.moonHelper.text
             // Конец вспомогательного блока
 
@@ -51,7 +58,7 @@ class AstroFragment : Fragment() {
                 moonPhaseValue.text = helperMoonPhase
                 moonIlluminationValue.text = "${it.moonIllumination} %"
             }
-            binding.moonPhaseImage.setImageResource(moonPhaseImage)
+            binding.moonPhaseImage.setImageResource(moonPhases.setMoonImage(it.moonPhase))
         }
 
         return binding.root

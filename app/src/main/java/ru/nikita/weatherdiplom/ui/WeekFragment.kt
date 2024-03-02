@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.nikita.weatherdiplom.adapter.MyAdapter
 import ru.nikita.weatherdiplom.adapter.OnInteractionListener
@@ -18,6 +20,7 @@ import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNIN
 import ru.nikita.weatherdiplom.utils.KEY_AUTH_SIGNUP
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 
+@AndroidEntryPoint
 class WeekFragment : Fragment() {
 
     private lateinit var binding: FragmentWeekBinding

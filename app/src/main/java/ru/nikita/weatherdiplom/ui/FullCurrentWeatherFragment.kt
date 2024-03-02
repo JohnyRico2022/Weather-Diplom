@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentFullCurrentWeatherBinding
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
 
+@AndroidEntryPoint
 class FullCurrentWeatherFragment : Fragment() {
 
     private lateinit var binding: FragmentFullCurrentWeatherBinding

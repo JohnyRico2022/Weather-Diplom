@@ -1,6 +1,6 @@
 package ru.nikita.weatherdiplom.utils
 
-object DateConverter {
+class DateConverter {
 
     fun convertDate(dateFromServer: String): String {
 
@@ -9,7 +9,6 @@ object DateConverter {
         return dateFromServer[8].toString() + dateFromServer[9]
             .toString() + "." + dateFromServer[5].toString() + dateFromServer[6].toString()
     }
-
 
     fun convertDateWithHours(dateFromServer: String): String {
 
