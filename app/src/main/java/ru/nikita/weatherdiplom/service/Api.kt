@@ -6,6 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import dagger.Provides
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
@@ -16,6 +21,9 @@ import ru.nikita.weatherdiplom.dto.Day
 import ru.nikita.weatherdiplom.dto.Week
 import ru.nikita.weatherdiplom.utils.DateConverter
 import ru.nikita.weatherdiplom.utils.TextConverter
+import javax.inject.Inject
+import javax.inject.Singleton
+
 
 class Api(val context: Application) {
 
@@ -25,6 +33,8 @@ class Api(val context: Application) {
 
     private val myApiKey = BuildConfig.MY_API_KEY
     private val baseURL = "https://api.weatherapi.com/v1/"
+
+    private val dateConverter = DateConverter()
 
     suspend fun getWeather(city: String, language: String) {
 
@@ -45,11 +55,13 @@ class Api(val context: Application) {
         }
     }
 
+
     private fun parseWeatherData(result: String) {
         val mainObject = JSONObject(result)
         parseDay(mainObject)
         parseWeek(mainObject)
     }
+
 
     private fun parseWeek(mainObject: JSONObject): MutableLiveData<List<Week>> {
 
@@ -59,7 +71,7 @@ class Api(val context: Application) {
             val day = daysArray[i] as JSONObject
 
             val item = Week(
-                DateConverter.convertDate(day.getString("date")),
+                dateConverter.convertDate(day.getString("date")),
                 TextConverter.convertToUtf8(
                     day.getJSONObject("day").getJSONObject("condition").getString("text")
                 ),
@@ -73,6 +85,7 @@ class Api(val context: Application) {
         dataListWeek.value = list
         return dataListWeek
     }
+
 
     private fun parseDay(mainObject: JSONObject): MutableLiveData<Day> {
 
@@ -107,12 +120,13 @@ class Api(val context: Application) {
         return dataDay
     }
 
+
     suspend fun parseHours(itemWeek: String): MutableLiveData<List<Week>> {
         val hoursArray = JSONArray(itemWeek)
         val list = ArrayList<Week>()
         for (i in 0 until hoursArray.length()) {
             val item = Week(
-                DateConverter.convertDateWithHours((hoursArray[i] as JSONObject).getString("time")),
+                dateConverter.convertDateWithHours((hoursArray[i] as JSONObject).getString("time")),
                 TextConverter.convertToUtf8(
                     (hoursArray[i] as JSONObject).getJSONObject("condition").getString("text")
                 ),
@@ -126,6 +140,7 @@ class Api(val context: Application) {
         dataListHours.value = list
         return dataListHours
     }
+
 
     private fun parseError(error: String) {
         when (error) {

@@ -15,6 +15,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -22,6 +23,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.nikita.weatherdiplom.R
 import ru.nikita.weatherdiplom.databinding.FragmentDayBinding
@@ -35,12 +37,16 @@ import ru.nikita.weatherdiplom.utils.dialogManager.InfoDialog
 import ru.nikita.weatherdiplom.utils.dialogManager.LocationDialog
 import ru.nikita.weatherdiplom.utils.isPermissionGranted
 import ru.nikita.weatherdiplom.viewmodel.WeatherViewModel
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DayFragment : Fragment() {
     private lateinit var binding: FragmentDayBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var launcher: ActivityResultLauncher<String>
 
+    @Inject
+    lateinit var hideKeyboard: AndroidUtils
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -72,7 +78,7 @@ class DayFragment : Fragment() {
                 pref.edit()
                     .putString(KEY_DATA_CITY, textCity)
                     .apply()
-                AndroidUtils.hideKeyboard(requireView())
+                hideKeyboard.hideKeyboard(requireView())
                 lifecycleScope.launch {
                     viewModel.getWeather(textCity, language)
                 }
