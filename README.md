@@ -40,7 +40,8 @@
 _Запрос города на кирилице и латинице_
 
 <image src="/ScreenShots/5.jpg" width=30% height=30%>
-<image src="/ScreenShots/7.jpg" width=30% height=30%>
+
+<image src="/ScreenShots/6.jpg" width=30% height=30%>
 
 _Подробная информация о погоде_
 
